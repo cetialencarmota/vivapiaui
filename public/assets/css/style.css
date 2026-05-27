@@ -1,3 +1,93 @@
+/* --- TOAST NOTIFICATIONS --- */
+#toast-container {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.toast {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 14px 20px;
+  border-radius: 10px;
+  background: #1c1d2b;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4);
+  min-width: 320px;
+  max-width: 460px;
+  pointer-events: auto;
+  transform: translateX(120%);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.toast.toast-show {
+  transform: translateX(0);
+  opacity: 1;
+}
+
+.toast.toast-hiding {
+  transform: translateX(120%);
+  opacity: 0;
+}
+
+.toast-icon {
+  font-size: 1.3rem;
+  flex-shrink: 0;
+}
+
+.toast-message {
+  flex: 1;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  color: var(--cor-texto-claro);
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: rgba(255,255,255,0.4);
+  font-size: 1.3rem;
+  cursor: pointer;
+  padding: 0 0 0 8px;
+  line-height: 1;
+  flex-shrink: 0;
+}
+
+.toast-close:hover {
+  color: rgba(255,255,255,0.8);
+}
+
+.toast-erro {
+  border-left: 4px solid #ef4444;
+}
+
+.toast-erro .toast-icon {
+  color: #ef4444;
+}
+
+.toast-sucesso {
+  border-left: 4px solid #22c55e;
+}
+
+.toast-sucesso .toast-icon {
+  color: #22c55e;
+}
+
+.toast-info {
+  border-left: 4px solid #6366f1;
+}
+
+.toast-info .toast-icon {
+  color: #6366f1;
+}
+
 @font-face {
     font-family: 'Rooney Sans Heavy Italic';
     src: url('../fonts/RooneySans-HeavyItalic.woff2') format('woff2'),

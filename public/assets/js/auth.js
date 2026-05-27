@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         setUsuarioLogado(data.usuario);
         window.location.href = data.usuario.tipo_perfil === 'admin' ? 'painel-admin.html' : '../index.html';
       } catch (err) {
-        alert('Erro ao entrar: ' + err.message);
+        mostrarToast('Erro ao entrar: ' + err.message, 'erro');
       }
     });
   }
@@ -28,12 +28,12 @@ document.addEventListener('DOMContentLoaded', function () {
       let senha = document.getElementById('cadastro-senha').value;
       let confirmar = document.getElementById('cadastro-confirmar-senha').value;
       if (senha !== confirmar) {
-        alert('As senhas não conferem.');
+        mostrarToast('As senhas não conferem.', 'erro');
         return;
       }
       let tipoPerfil = document.querySelector('input[name="perfil"]:checked');
       if (!tipoPerfil) {
-        alert('Selecione um tipo de perfil.');
+        mostrarToast('Selecione um tipo de perfil.', 'erro');
         return;
       }
       try {
@@ -49,7 +49,7 @@ document.addEventListener('DOMContentLoaded', function () {
           window.location.href = '../index.html';
         }
       } catch (err) {
-        alert('Erro ao cadastrar: ' + err.message);
+        mostrarToast('Erro ao cadastrar: ' + err.message, 'erro');
       }
     });
   }

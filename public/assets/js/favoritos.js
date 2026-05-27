@@ -41,12 +41,12 @@ function alternarIconeHeart(btn, favoritado) {
 async function toggleFavoritar(artistaId, btn) {
   if (!isAuthenticated()) {
     let loginHref = window.location.pathname.includes('/pages/') ? 'login.html' : 'pages/login.html';
-    alert('Faça login para favoritar artistas.');
+    mostrarToast('Faça login para favoritar artistas.', 'erro');
     window.location.href = loginHref;
     return;
   }
   if (getMeuArtistaId() === artistaId) {
-    alert('Você não pode favoritar seu próprio perfil.');
+    mostrarToast('Você não pode favoritar seu próprio perfil.', 'erro');
     return;
   }
   let favoritado = isFavoritado(artistaId);
@@ -64,7 +64,7 @@ async function toggleFavoritar(artistaId, btn) {
     if (btn) alternarIconeHeart(btn, !favoritado);
     return !favoritado;
   } catch (err) {
-    alert('Erro ao ' + (favoritado ? 'remover' : 'adicionar') + ' favorito: ' + err.message);
+    mostrarToast('Erro ao ' + (favoritado ? 'remover' : 'adicionar') + ' favorito: ' + err.message, 'erro');
   }
 }
 
@@ -110,7 +110,7 @@ function renderizarArtistas(artistas) {
         '<p class="tagline">' + (artista.categoria_artistica || 'Artista Piauiense') + '</p>' +
         '<p class="desc">' + (artista.biografia ? artista.biografia.substring(0, 60) + '...' : '') + '</p>' +
         '<div class="card-actions">' +
-          '<button class="btn-support-small" onclick="(window.apoiarArtista || function(id){alert(\'Em breve\')})(' + artistaId + ')"><i class="fas fa-heart"></i> Apoiar</button>' +
+          '<button class="btn-support-small" onclick="(window.apoiarArtista || function(id){mostrarToast(\'Funcionalidade em breve!\', \'info\')})(' + artistaId + ')"><i class="fas fa-heart"></i> Apoiar</button>' +
           '<a href="perfil-artista.html?id=' + artistaId + '" class="btn-outline-small">Ver perfil</a>' +
         '</div>' +
       '</div>';

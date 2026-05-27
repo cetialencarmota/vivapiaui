@@ -7,11 +7,7 @@ let paginaAtual = 1;
 let itensPorPagina = 8;
 
 function mostrarErro(msg) {
-  let el = document.getElementById('erro-obra');
-  if (!el) return;
-  el.textContent = msg;
-  el.style.display = 'block';
-  setTimeout(function () { el.style.display = 'none'; }, 5000);
+  mostrarToast(msg, 'erro');
 }
 
 function configurarLogout() {
@@ -275,6 +271,7 @@ async function excluirObra(obraId) {
   try {
     await api('/obras/' + obraId, { method: 'DELETE' });
     carregarObras();
+    mostrarToast('Obra excluída com sucesso!', 'sucesso');
   } catch (err) {
     mostrarErro('Erro ao excluir obra: ' + err.message);
   }
@@ -415,6 +412,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
         fecharModal();
         carregarObras();
+        mostrarToast('Obra ' + (obraEditandoId ? 'atualizada' : 'adicionada') + ' com sucesso!', 'sucesso');
 
         btnSubmit.innerHTML = textoOriginal;
         btnSubmit.disabled = false;

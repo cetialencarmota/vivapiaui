@@ -2,16 +2,7 @@ let fotoFile = null;
 let capaFile = null;
 
 function mostrarErroGlobal(msg) {
-  let el = document.getElementById('erro-global');
-  if (!el) return;
-  el.textContent = msg;
-  el.style.display = 'block';
-  setTimeout(function () { el.style.display = 'none'; }, 5000);
-}
-
-function esconderErroGlobal() {
-  let el = document.getElementById('erro-global');
-  if (el) el.style.display = 'none';
+  mostrarToast(msg, 'erro');
 }
 
 function configurarLogout() {
@@ -84,24 +75,19 @@ document.addEventListener('DOMContentLoaded', function () {
     btnSalvarSenha.addEventListener('click', async function () {
       let novaSenha = document.getElementById('nova-senha').value;
       let confirmarSenha = document.getElementById('confirmar-senha').value;
-      let msgErro = document.getElementById('msg-senha-erro');
 
       if (!novaSenha || !confirmarSenha) {
-        msgErro.textContent = 'Preencha todos os campos de senha.';
-        msgErro.style.display = 'block';
+        mostrarToast('Preencha todos os campos de senha.', 'erro');
         return;
       }
       if (novaSenha.length < 6) {
-        msgErro.textContent = 'A nova senha deve ter no mínimo 6 caracteres.';
-        msgErro.style.display = 'block';
+        mostrarToast('A nova senha deve ter no mínimo 6 caracteres.', 'erro');
         return;
       }
       if (novaSenha !== confirmarSenha) {
-        msgErro.textContent = 'A nova senha e a confirmação não conferem.';
-        msgErro.style.display = 'block';
+        mostrarToast('A nova senha e a confirmação não conferem.', 'erro');
         return;
       }
-      msgErro.style.display = 'none';
 
       btnSalvarSenha.disabled = true;
       btnSalvarSenha.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Alterando...';
@@ -114,6 +100,7 @@ document.addEventListener('DOMContentLoaded', function () {
         btnSalvarSenha.style.backgroundColor = '#2ecc71';
         document.getElementById('nova-senha').value = '';
         document.getElementById('confirmar-senha').value = '';
+        mostrarToast('Senha alterada com sucesso!', 'sucesso');
         setTimeout(function () {
           btnSalvarSenha.innerHTML = '<i class="fas fa-check"></i> Salvar senha';
           btnSalvarSenha.style.backgroundColor = '';
@@ -121,8 +108,7 @@ document.addEventListener('DOMContentLoaded', function () {
           formSenha.style.display = 'none';
         }, 2000);
       } catch (err) {
-        msgErro.textContent = err.message;
-        msgErro.style.display = 'block';
+        mostrarToast(err.message, 'erro');
         btnSalvarSenha.innerHTML = '<i class="fas fa-check"></i> Salvar senha';
         btnSalvarSenha.style.backgroundColor = '';
         btnSalvarSenha.disabled = false;
@@ -145,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function () {
   if (formulario) {
     formulario.addEventListener('submit', async function (evento) {
       evento.preventDefault();
-      esconderErroGlobal();
+
 
       if (!isAuthenticated()) {
         mostrarErroGlobal('Faça login para salvar as configurações.');
@@ -208,13 +194,10 @@ document.addEventListener('DOMContentLoaded', function () {
           document.querySelector('.nome-mini').textContent = artistaAtualizado.nome_artistico || artistaAtualizado.nome || 'Artista';
         }
 
-        botaoSalvar.innerHTML = '<i class="fas fa-check"></i> Alterações Salvas!';
-        botaoSalvar.style.backgroundColor = '#2ecc71';
-        setTimeout(function () {
-          botaoSalvar.innerHTML = textoOriginal;
-          botaoSalvar.style.backgroundColor = '';
-          botaoSalvar.disabled = false;
-        }, 3000);
+        mostrarToast('Alterações salvas com sucesso!', 'sucesso');
+        botaoSalvar.innerHTML = textoOriginal;
+        botaoSalvar.style.backgroundColor = '';
+        botaoSalvar.disabled = false;
       } catch (err) {
         mostrarErroGlobal('Erro ao salvar: ' + err.message);
         botaoSalvar.innerHTML = textoOriginal;

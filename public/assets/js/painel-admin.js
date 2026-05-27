@@ -103,10 +103,11 @@ async function excluirItem(id, tipo) {
   if (!confirm('Tem certeza que deseja excluir este item?')) return;
   try {
     let endpoint = tipo === 'evento' ? '/eventos/' : '/pontos-culturais/';
-    await api(endpoint + id, { method: 'DELETE' });
+      await api(endpoint + id, { method: 'DELETE' });
     carregarItens();
+    mostrarToast('Item excluído com sucesso!', 'sucesso');
   } catch (err) {
-    alert('Erro ao excluir: ' + err.message);
+    mostrarToast('Erro ao excluir: ' + err.message, 'erro');
   }
 }
 
@@ -116,13 +117,14 @@ async function toggleStatus(id, tipo) {
     if (!item) return;
     let novoStatus = item.status === 'Publicado' ? 'Rascunho' : 'Publicado';
     let endpoint = tipo === 'evento' ? '/eventos/' : '/pontos-culturais/';
-    await api(endpoint + id, {
+      await api(endpoint + id, {
       method: 'PUT',
       body: JSON.stringify({ status: novoStatus })
     });
     carregarItens();
+    mostrarToast('Status alterado para "' + novoStatus + '"!', 'sucesso');
   } catch (err) {
-    alert('Erro ao alterar status: ' + err.message);
+    mostrarToast('Erro ao alterar status: ' + err.message, 'erro');
   }
 }
 
@@ -161,7 +163,7 @@ function configurarUploadImagem() {
     let file = input.files[0];
     if (!file) return;
     if (!isAuthenticated()) {
-      alert('Faça login para enviar imagens.');
+      mostrarToast('Faça login para enviar imagens.', 'erro');
       return;
     }
     let formData = new FormData();
@@ -178,7 +180,7 @@ function configurarUploadImagem() {
       }
       document.getElementById('drop-text').textContent = 'Imagem selecionada';
     } catch (err) {
-      alert('Erro ao enviar imagem: ' + err.message);
+      mostrarToast('Erro ao enviar imagem: ' + err.message, 'erro');
     }
     dropArea.style.opacity = '1';
   });
@@ -209,9 +211,9 @@ function configurarUploadAvatar() {
       });
       setUsuarioLogado(result.usuario);
       atualizarHeaderLogado();
-      alert('Foto atualizada com sucesso!');
+      mostrarToast('Foto atualizada com sucesso!', 'sucesso');
     } catch (err) {
-      alert('Erro ao enviar foto: ' + err.message);
+      mostrarToast('Erro ao enviar foto: ' + err.message, 'erro');
     }
     input.value = '';
   });
@@ -224,7 +226,7 @@ function configurarFormulario() {
   form.addEventListener('submit', async function (e) {
     e.preventDefault();
     if (!isAuthenticated()) {
-      alert('Faça login como administrador para cadastrar itens.');
+      mostrarToast('Faça login como administrador para cadastrar itens.', 'erro');
       return;
     }
 
@@ -237,7 +239,7 @@ function configurarFormulario() {
       let latitude = parseFloat(document.getElementById('latitude').value);
       let longitude = parseFloat(document.getElementById('longitude').value);
       if (isNaN(latitude) || isNaN(longitude)) {
-        alert('Informe latitude e longitude válidas.');
+        mostrarToast('Informe latitude e longitude válidas.', 'erro');
         return;
       }
       try {
@@ -255,12 +257,12 @@ function configurarFormulario() {
             status: 'Publicado'
           })
         });
-        alert('"' + nome + '" cadastrado com sucesso!');
+        mostrarToast('"' + nome + '" cadastrado com sucesso!', 'sucesso');
         form.reset();
         removerImagem();
         carregarItens();
       } catch (err) {
-        alert('Erro ao cadastrar: ' + err.message);
+        mostrarToast('Erro ao cadastrar: ' + err.message, 'erro');
       }
     } else {
       let dataInicio = document.getElementById('data-inicio').value;
@@ -269,7 +271,7 @@ function configurarFormulario() {
       let latEvento = parseFloat(document.getElementById('latitude').value);
       let lngEvento = parseFloat(document.getElementById('longitude').value);
       if (!dataInicio) {
-        alert('Informe a data de início do evento.');
+        mostrarToast('Informe a data de início do evento.', 'erro');
         return;
       }
       try {
@@ -289,12 +291,12 @@ function configurarFormulario() {
             status: 'Publicado'
           })
         });
-        alert('"' + nome + '" cadastrado com sucesso!');
+        mostrarToast('"' + nome + '" cadastrado com sucesso!', 'sucesso');
         form.reset();
         removerImagem();
         carregarItens();
       } catch (err) {
-        alert('Erro ao cadastrar: ' + err.message);
+        mostrarToast('Erro ao cadastrar: ' + err.message, 'erro');
       }
     }
   });
@@ -303,7 +305,7 @@ function configurarFormulario() {
 async function buscarCoordenadas() {
   let endereco = document.getElementById('localizacao').value;
   if (!endereco) {
-    alert('Digite o endereço primeiro.');
+    mostrarToast('Digite o endereço primeiro.', 'erro');
     return;
   }
   let btn = document.querySelector('.btn-geocode');
@@ -315,12 +317,12 @@ async function buscarCoordenadas() {
     if (data && data.length > 0) {
       document.getElementById('latitude').value = data[0].lat;
       document.getElementById('longitude').value = data[0].lon;
-      alert('Coordenadas encontradas: ' + data[0].lat + ', ' + data[0].lon);
+      mostrarToast('Coordenadas encontradas: ' + data[0].lat + ', ' + data[0].lon, 'sucesso');
     } else {
-      alert('Endereço não encontrado. Insira as coordenadas manualmente.');
+      mostrarToast('Endereço não encontrado. Insira as coordenadas manualmente.', 'erro');
     }
   } catch (err) {
-    alert('Erro ao buscar coordenadas: ' + err.message);
+    mostrarToast('Erro ao buscar coordenadas: ' + err.message, 'erro');
   } finally {
     btn.disabled = false;
     btn.innerHTML = '<i class="fas fa-map-pin"></i> Buscar coordenadas pelo endereço';

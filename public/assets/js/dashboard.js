@@ -7,8 +7,9 @@ async function excluirObra(id) {
   try {
     await api('/obras/' + id, { method: 'DELETE' });
     carregarObras();
+    mostrarToast('Obra excluída com sucesso!', 'sucesso');
   } catch (err) {
-    alert('Erro ao excluir obra: ' + err.message);
+    mostrarToast('Erro ao excluir obra: ' + err.message, 'erro');
   }
 }
 
@@ -290,7 +291,7 @@ function iniciarModalObra() {
       };
 
       if (!isAuthenticated()) {
-        alert('Faça login como artista para adicionar obras.');
+        mostrarToast('Faça login como artista para adicionar obras.', 'erro');
         return;
       }
 
@@ -302,8 +303,9 @@ function iniciarModalObra() {
         obrasCache.unshift(obra);
         renderizarObras(obrasCache);
         fecharModalObra();
+        mostrarToast('Obra adicionada com sucesso!', 'sucesso');
       } catch (err) {
-        alert('Erro ao adicionar obra: ' + err.message);
+        mostrarToast('Erro ao adicionar obra: ' + err.message, 'erro');
       }
     });
   }
@@ -366,12 +368,13 @@ document.addEventListener('DOMContentLoaded', function () {
       if (!id) return;
       try {
         await api('/mensagens/' + id + '/lida', { method: 'PATCH' });
+        mostrarToast('Mensagem marcada como lida.', 'sucesso');
         this.disabled = true;
         this.style.opacity = '0.5';
         document.getElementById('msgViewUnread').style.display = 'none';
         carregarMensagens();
       } catch (err) {
-        alert('Erro ao marcar como lida: ' + err.message);
+        mostrarToast('Erro ao marcar como lida: ' + err.message, 'erro');
       }
     });
   }
