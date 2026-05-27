@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Viva Piauí</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/auth.css">
+    <!-- Font Awesome para ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="auth-container">
+        <!-- Lado Esquerdo: Identidade Visual -->
+        <aside class="auth-sidebar" style="background-image: url('../assets/images/img_left_page_login.png');">
+            <div class="auth-sidebar-content">
+                <div class="logo-container">
+                    <div class="logo-icon">
+                        <img src="../assets/images/logo.png" alt="Viva Piauí">
+                    </div>
+                    <div class="logo-text">
+                        <h1>Viva <span>PIAUÍ</span></h1>
+                        <p>Cultura que você sente</p>
+                    </div>
+                </div>
+
+                <div class="features-list">
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-map-marker-alt"></i></div>
+                        <div class="feature-text">
+                            <h3>Explore o Piauí</h3>
+                            <p>Descubra lugares, eventos e histórias que mantêm viva a cultura do nosso estado.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-users"></i></div>
+                        <div class="feature-text">
+                            <h3>Apoie nossos artistas</h3>
+                            <p>Conecte-se com talentos locais e valorize a arte que transforma.</p>
+                        </div>
+                    </div>
+                    <div class="feature-item">
+                        <div class="feature-icon"><i class="fas fa-calendar-alt"></i></div>
+                        <div class="feature-text">
+                            <h3>Viva experiências únicas</h3>
+                            <p>Participe de eventos, conheça tradições e faça parte dessa jornada cultural.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Lado Direito: Formulário de Login -->
+        <main class="auth-form-container">
+            <div class="auth-form-wrapper">
+                <nav class="auth-tabs">
+                    <a href="login.html" class="tab-link active">Entrar</a>
+                    <a href="cadastro.html" class="tab-link">Criar conta</a>
+                </nav>
+
+                <form id="loginForm">
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <i class="far fa-envelope input-icon"></i>
+                            <input type="text" id="login-email" class="form-control" placeholder="E-mail ou telefone" required>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <div class="input-wrapper">
+                            <i class="fas fa-lock input-icon"></i>
+                            <input type="password" id="login-senha" class="form-control" placeholder="Senha" required>
+                        </div>
+                        <a href="#" class="forgot-password">Esqueci minha senha</a>
+                    </div>
+
+                    <button type="submit" class="btn-primary">
+                        Entrar
+                    </button>
+                    <a href="../index.html" class="btn-link-back">Continuar sem entrar</a>
+                </form>
+
+                <footer class="auth-footer">
+                    Ao continuar, você concorda com nossos <a href="#">Termos de Uso</a><br>
+                    e <a href="#">Política de Privacidade</a>.
+                </footer>
+            </div>
+        </main>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/auth.js"></script>
+</body>
+</html>

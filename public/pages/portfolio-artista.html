@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meu Portfólio - Viva Piauí</title>
+    <link rel="stylesheet" href="../assets/css/portfolio.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- BARRA LATERAL (SIDEBAR) -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="Logo Viva Piauí" class="logo-icon">
+                    <div class="logo-text">
+                        <h1>Viva <span>PIAUÍ</span></h1>
+                        <p>Cultura que você sente</p>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="menu-principal">
+                <a href="dashboard-artista.html" class="menu-item">
+                    <span class="icon">⊞</span> Dashboard
+                </a>
+                <a href="#" class="menu-item active">
+                    <span class="icon">🖼</span> Meu Portfólio
+                </a>
+                <a href="artista-configuracoes.html" class="menu-item">
+                    <span class="icon">⚙</span> Configurações
+                </a>
+            </nav>
+
+            <div class="perfil-artista-sidebar">
+                <div class="avatar-container">
+                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e16fd3c?auto=format&fit=crop&w=200&q=80" alt="Foto do artista" class="avatar">
+                </div>
+                <div class="info-artista">
+                    <h3>Irmã Deusa</h3>
+                    <span class="badge-artista">Artista</span>
+                </div>
+            </div>
+
+            <button class="btn-logout">
+                <span class="icon">↪</span> Sair da conta
+            </button>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="content">
+            <header class="header-portfolio">
+                <div class="titulo-secao">
+                    <h1>Meu Portfólio</h1>
+                    <p>Gerencie e compartilhe suas obras com o mundo.</p>
+                </div>
+                <div class="acoes-header">
+                    <div class="search-bar">
+                        <input type="text" id="searchObra" placeholder="Buscar obra...">
+                        <span class="search-icon"><i class="fas fa-search"></i></span>
+                    </div>
+                    <button class="btn-adicionar">
+                        <span>+</span> Adicionar Nova Obra
+                    </button>
+                </div>
+            </header>
+
+            <!-- FILTROS -->
+            <nav class="filtros-portfolio" id="filtrosPortfolio"></nav>
+
+            <!-- GRADE DE OBRAS -->
+            <div class="grid-obras" id="gridObras"></div>
+
+            <!-- RODAPÉ DA LISTAGEM (PAGINAÇÃO) -->
+            <footer class="footer-listagem" id="footerListagem">
+                <p class="contador-obras" id="contadorObras">Nenhuma obra encontrada</p>
+                <div class="paginacao" id="paginacao"></div>
+                <div class="itens-por-pagina">
+                    <span>Itens por página:</span>
+                    <select class="select-itens" id="selectItensPorPagina">
+                        <option value="8">8</option>
+                        <option value="16">16</option>
+                        <option value="24">24</option>
+                    </select>
+                </div>
+            </footer>
+        </main>
+    </div>
+
+    <!-- MODAL ADICIONAR OBRA -->
+    <div class="modal-overlay" id="modalObra">
+        <div class="modal-content">
+            <header class="modal-header">
+                <div class="modal-titulo-container">
+                    <div class="modal-icones">
+                        <span class="icon-img"><i class="fas fa-image"></i></span>
+                        <span class="icon-plus"><i class="fas fa-plus"></i></span>
+                    </div>
+                    <div>
+                        <h2 id="modalTitulo">Adicionar Nova Obra</h2>
+                        <p id="modalSubtitulo">Compartilhe sua arte com o mundo.</p>
+                    </div>
+                </div>
+                <button class="btn-fechar-modal" id="btnFecharModal">&times;</button>
+            </header>
+
+            <form id="formNovaObra" class="modal-body">
+                <div class="modal-colunas">
+                    <!-- Coluna Esquerda: Upload -->
+                    <div class="coluna-upload">
+                        <label>Imagem da Obra</label>
+                        <p class="instrucao-input">Use uma imagem de alta qualidade que represente sua obra.</p>
+                        <div class="upload-area" id="uploadArea">
+                            <div class="upload-placeholder">
+                                <span class="upload-icon">☁️</span>
+                                <h3>Upload de Imagem</h3>
+                                <p>Arraste e solte sua imagem aqui ou <span class="link-destaque">clique para selecionar</span></p>
+                                <span class="formatos-info">Formatos: JPG, PNG, WEBP ou GIF - Tamanho máx.: 10MB</span>
+                            </div>
+                            <img id="previewObra" style="display:none; width:100%; border-radius:8px;">
+                            <input type="file" id="inputImagem" hidden accept="image/*">
+                        </div>
+                    </div>
+
+                    <!-- Coluna Direita: Campos -->
+                    <div class="coluna-campos">
+                        <div class="campo-grupo">
+                            <label for="tituloObra">Título da Obra <span class="obrigatorio">*</span></label>
+                            <input type="text" id="tituloObra" placeholder="Ex.: Vasos da Tradição" required>
+                        </div>
+
+                        <div class="campo-grupo">
+                            <label for="descricaoObra">Descrição <span class="obrigatorio">*</span></label>
+                            <textarea id="descricaoObra" placeholder="Conte sobre sua obra, técnicas utilizadas, inspiração e o que ela representa..." maxlength="500" required></textarea>
+                            <div class="contador-caracteres">0/500</div>
+                        </div>
+
+                        <div class="campo-grupo">
+                            <label for="categoriaObra">Categoria <span class="obrigatorio">*</span></label>
+                            <select id="categoriaObra" required>
+                                <option value="" disabled selected>Selecione uma categoria</option>
+                                <option value="Cerâmicas">Cerâmicas</option>
+                                <option value="Pinturas">Pinturas</option>
+                                <option value="Artesanato">Artesanato</option>
+                                <option value="Fotografias">Fotografias</option>
+                            </select>
+                        </div>
+
+                        <div class="campo-grupo">
+                            <label>Visibilidade <span class="obrigatorio">*</span></label>
+                            <p class="instrucao-input">Escolha quem poderá ver esta obra.</p>
+                            <div class="opcoes-visibilidade">
+                                <label class="radio-card">
+                                    <input type="radio" name="visibilidade" value="Público" checked>
+                                    <div class="radio-conteudo">
+                                        <span class="radio-icon"><i class="fas fa-globe"></i></span>
+                                        <div class="radio-texto">
+                                            <strong>Público</strong>
+                                            <p>Visível para todos os visitantes</p>
+                                        </div>
+                                    </div>
+                                </label>
+                                <label class="radio-card">
+                                    <input type="radio" name="visibilidade" value="Rascunho">
+                                    <div class="radio-conteudo">
+                                        <span class="radio-icon"><i class="fas fa-lock"></i></span>
+                                        <div class="radio-texto">
+                                            <strong>Rascunho</strong>
+                                            <p>Apenas você pode visualizar</p>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="erro-obra" style="color:#e74c3c;font-size:0.85rem;margin-bottom:0.5rem;display:none;"></div>
+                <footer class="modal-footer">
+                    <button type="button" class="btn-cancelar" id="btnCancelarModal">Cancelar</button>
+                    <button type="submit" class="btn-confirmar-add" id="btnSubmitObra">
+                        <span id="btnSubmitIcon">+</span> <span id="btnSubmitTexto">Adicionar ao Portfólio</span>
+                    </button>
+                </footer>
+            </form>
+        </div>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script>window._GUARD_PERFIS = ['artista', 'admin'];</script>
+    <script src="../assets/js/auth-guard.js"></script>
+    <script src="../assets/js/portfolio-artista.js"></script>
+</body>
+</html>

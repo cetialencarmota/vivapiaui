@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos e Tradições - Viva Piauí</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/events.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="events-page">
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo-container-small">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="Viva Piauí" class="logo-mini">
+                    <div class="logo-text-small">
+                        <h1>Viva <span>PIAUÍ</span></h1>
+                        <p>Cultura que você sente</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <nav class="main-nav">
+            <a href="../index.html" class="nav-link">Mapa</a>
+            <a href="artistas.html" class="nav-link">Artistas</a>
+            <a href="eventos.html" class="nav-link active">Eventos</a>
+            <a href="sobre.html" class="nav-link">Sobre</a>
+        </nav>
+
+        <div class="header-right">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar lugares, eventos, artistas...">
+            </div>
+            <div class="user-actions" id="user-actions">
+                <div class="user-profile-mini">
+                    <img src="https://via.placeholder.com/32x32?text=?" alt="Avatar">
+                    <span>Entrar <i class="fas fa-chevron-down"></i></span>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="login.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> Meu Perfil
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="breadcrumb">Início > Eventos e Tradições</div>
+        
+        <!-- SEÇÃO HERO DE EVENTOS -->
+        <section class="events-hero">
+            <div class="hero-info">
+                <h1>Viva nossas<br><span>tradições</span></h1>
+                <p>Encontre festas, celebrações e encontros que mantêm viva a alma do Piauí.</p>
+            </div>
+
+            <!-- BANNER DE EVENTO EM DESTAQUE -->
+            <div class="featured-event-banner">
+                <div class="featured-content">
+                    <div class="event-date-large">
+                        <span class="day">--</span>
+                        <span class="month">---</span>
+                    </div>
+                    <div class="featured-text">
+                        <span class="badge-destaque">EVENTO EM DESTAQUE</span>
+                        <h2>Carregando...</h2>
+                        <p class="location"><i class="fas fa-map-marker-alt"></i> --</p>
+                        <p class="description"></p>
+                        <div class="event-tags"></div>
+                    </div>
+                </div>
+                <div class="featured-image">
+                    <img src="" alt="Evento em destaque">
+                </div>
+            </div>
+        </section>
+
+        <div class="events-layout-main">
+            <!-- SIDEBAR ESQUERDA: CALENDÁRIO E FILTROS -->
+            <aside class="events-sidebar">
+                <div class="sidebar-card calendar-card">
+                    <div class="card-header">
+                        <i class="far fa-calendar-alt"></i>
+                        <h4>Calendário</h4>
+                        <span class="current-month" id="currentMonth"></span>
+                        <div class="cal-nav">
+                            <button class="cal-nav-btn" id="calPrev"><i class="fas fa-chevron-left"></i></button>
+                            <button class="cal-nav-btn" id="calNext"><i class="fas fa-chevron-right"></i></button>
+                        </div>
+                    </div>
+                    <div class="calendar-grid" id="calendarGrid"></div>
+                </div>
+
+                <div class="sidebar-card filters-card">
+                    <div class="card-header">
+                        <i class="fas fa-filter"></i>
+                        <h4>Filtros</h4>
+                        <a href="#" class="clear-filters">Limpar</a>
+                    </div>
+                    <ul class="filter-options" id="filterOptions">
+                        <li class="active" data-filtro="proximos"><i class="far fa-clock"></i> Próximos</li>
+                        <li data-filtro="todos"><i class="fa fa-list"></i> Todos</li>
+                    </ul>
+                </div>
+            </aside>
+
+            <!-- LISTAGEM DE EVENTOS -->
+            <section class="events-list-section">
+                <div class="list-header">
+                    <div class="header-title">
+                        <h3>Eventos e Tradições</h3>
+                        <p>0 eventos encontrados</p>
+                    </div>
+                    <div class="header-sort">
+                        <span>Ordenar por</span>
+                        <select class="sort-select" id="sortSelect">
+                            <option value="proximos">Mais próximos</option>
+                            <option value="nome">Ordem alfabética</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="events-list">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/eventos.js"></script>
+</body>
+</html>

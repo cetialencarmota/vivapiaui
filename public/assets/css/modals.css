@@ -1,0 +1,302 @@
+/* --- MODAL APOIO PIX --- */
+#modal-pix.modal-overlay {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+#modal-pix.modal-overlay.active {
+    display: flex;
+}
+
+#modal-pix .modal-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    width: 90%;
+    max-width: 500px;
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+#modal-pix .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--cor-texto-escuro);
+    font-size: 1.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-pix .modal-header .heart-icon {
+    font-size: 2rem;
+    color: var(--cor-primaria);
+    margin-bottom: 15px;
+}
+
+#modal-pix .modal-header h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+#modal-pix .modal-header h2 span {
+    color: var(--cor-primaria);
+}
+
+#modal-pix .modal-header p {
+    color: var(--cor-texto-escuro);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+#modal-pix .value-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+    margin-bottom: 30px;
+}
+
+#modal-pix .val-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--cor-texto-claro);
+    padding: 10px 20px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#modal-pix .val-btn.active {
+    background-color: rgba(255, 122, 0, 0.1);
+    border-color: var(--cor-primaria);
+    color: var(--cor-primaria);
+}
+
+#modal-pix .val-btn.outline {
+    border-color: var(--cor-destaque);
+    color: var(--cor-destaque);
+}
+
+#modal-pix .val-btn:hover:not(.active) {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#modal-pix .qr-section {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+#modal-pix .qr-section p {
+    font-size: 0.85rem;
+    color: var(--cor-texto-escuro);
+    margin-bottom: 15px;
+}
+
+#modal-pix .qr-code-container {
+    background-color: white;
+    padding: 15px;
+    border-radius: 16px;
+    display: inline-block;
+    margin-bottom: 20px;
+}
+
+#modal-pix .qr-code {
+    width: 150px;
+    height: 150px;
+    display: block;
+}
+
+#modal-pix .btn-copy-pix {
+    background: transparent;
+    border: 1px solid var(--cor-destaque);
+    color: var(--cor-destaque);
+    width: 100%;
+    padding: 12px;
+    border-radius: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#modal-pix .modal-footer {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    text-align: left;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+}
+
+#modal-pix .modal-footer i {
+    color: var(--cor-destaque);
+    font-size: 1.2rem;
+    margin-top: 3px;
+}
+
+#modal-pix .modal-footer p {
+    font-size: 0.8rem;
+    color: var(--cor-texto-escuro);
+    line-height: 1.4;
+}
+
+/* --- MODAL MENSAGEM --- */
+#modal-mensagem.modal-overlay {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+#modal-mensagem.modal-overlay.active {
+    display: flex;
+}
+
+#modal-mensagem .modal-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    width: 90%;
+    max-width: 480px;
+    border-radius: 24px;
+    padding: 40px;
+    position: relative;
+    text-align: center;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+#modal-mensagem .modal-close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-color);
+    color: var(--cor-texto-escuro);
+    font-size: 1.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#modal-mensagem .modal-header .heart-icon {
+    font-size: 2rem;
+    color: var(--cor-destaque);
+    margin-bottom: 15px;
+}
+
+#modal-mensagem .modal-header h2 {
+    font-size: 1.3rem;
+    margin-bottom: 10px;
+}
+
+#modal-mensagem .modal-header h2 span {
+    color: var(--cor-primaria);
+}
+
+#modal-mensagem .modal-header p {
+    color: var(--cor-texto-escuro);
+    font-size: 0.9rem;
+    margin-bottom: 25px;
+}
+
+#modal-mensagem .form-group {
+    margin-bottom: 1.5rem;
+    text-align: left;
+}
+
+#modal-mensagem .form-group label {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--cor-texto-claro);
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+#modal-mensagem .form-group input,
+#modal-mensagem .form-group textarea {
+    width: 100%;
+    background: #1c1d2b;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 0.8rem;
+    color: white;
+    font-family: inherit;
+    outline: none;
+}
+
+#modal-mensagem .form-group textarea {
+    resize: none;
+}
+
+#modal-mensagem .btn-publish {
+    width: 100%;
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: opacity 0.2s;
+}
+
+#modal-mensagem .btn-publish:hover {
+    opacity: 0.85;
+}
+
+#modal-mensagem .btn-cancelar-modal {
+    width: 100%;
+    background: transparent;
+    color: var(--cor-texto-escuro);
+    border: 1px solid var(--border-color);
+    padding: 10px 24px;
+    border-radius: 8px;
+    font-weight: 500;
+    font-size: 0.85rem;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#modal-mensagem .btn-cancelar-modal:hover {
+    color: white;
+    border-color: rgba(255, 255, 255, 0.2);
+}

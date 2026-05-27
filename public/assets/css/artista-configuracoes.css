@@ -1,0 +1,424 @@
+/* artista-configuracoes.css */
+
+@font-face {
+    font-family: 'Rooney Sans Heavy Italic';
+    src: url('../fonts/RooneySans-HeavyItalic.woff2') format('woff2'),
+         url('../fonts/RooneySans-HeavyItalic.woff') format('woff'),
+         url('../fonts/RooneySans-HeavyItalic.ttf') format('truetype');
+    font-weight: normal;
+    font-style: italic;
+}
+
+:root {
+    --cor-fundo: #0d0f14;
+    --cor-sidebar: #161a23;
+    --cor-card: #1c222d;
+    --cor-primaria: #ff7a00;
+    --cor-texto-principal: #ffffff;
+    --cor-texto-secundario: #a0a0a0;
+    --cor-borda: #2d3544;
+    --cor-input: #12161f;
+    --cor-destaque-roxo: #6c5ce7;
+    --fonte-principal: 'Inter', sans-serif;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--cor-fundo);
+    color: var(--cor-texto-principal);
+    font-family: var(--fonte-principal);
+    display: flex;
+    min-height: 100vh;
+}
+
+/* --- SIDEBAR --- */
+.sidebar {
+    width: 260px;
+    background-color: var(--cor-sidebar);
+    padding: 2rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid var(--cor-borda);
+    position: fixed;
+    height: 100vh;
+}
+
+.logo-container {
+    margin-bottom: 3rem;
+}
+
+.logo-container a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.logo-icon {
+    width: 65px;
+    height: 65px;
+    border-radius: 8px;
+}
+
+.logo-text h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-family: 'Rooney Sans Heavy Italic', 'Inter', sans-serif;
+    font-style: italic;
+    letter-spacing: 0.5px;
+}
+
+.logo-text h1 span {
+    color: var(--cor-primaria);
+}
+
+.logo-text p {
+    font-size: 0.75rem;
+    color: var(--cor-texto-secundario);
+}
+
+.nav-menu {
+    flex-grow: 1;
+}
+
+.nav-item {
+    display: flex;
+    align-items: center;
+    padding: 0.8rem 1rem;
+    color: var(--cor-texto-secundario);
+    text-decoration: none;
+    border-radius: 8px;
+    margin-bottom: 0.5rem;
+    transition: 0.3s;
+}
+
+.nav-item i {
+    margin-right: 10px;
+    width: 18px;
+    text-align: center;
+}
+
+.nav-item:hover,
+.nav-item.active {
+    background-color: rgba(255, 122, 0, 0.1);
+    color: var(--cor-primaria);
+}
+
+.nav-item.active {
+    border: 1px solid var(--cor-primaria);
+}
+
+.perfil-mini {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1.5rem 0;
+    border-top: 1px solid var(--cor-borda);
+}
+
+.foto-mini {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 2px solid var(--cor-primaria);
+}
+
+.nome-mini {
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+.tag-artista {
+    background-color: var(--cor-destaque-roxo);
+    font-size: 0.7rem;
+    padding: 2px 10px;
+    border-radius: 12px;
+    margin-top: 5px;
+}
+
+.btn-sair {
+    margin-top: 1rem;
+    color: var(--cor-texto-secundario);
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.btn-sair:hover {
+    color: #e74c3c;
+}
+
+/* --- CONTEÚDO PRINCIPAL --- */
+.main-content {
+    margin-left: 260px;
+    flex-grow: 1;
+    padding: 2rem 3rem;
+    max-width: 1200px;
+}
+
+.header-pagina {
+    margin-bottom: 2rem;
+}
+
+.header-pagina h2 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.header-pagina p {
+    color: var(--cor-texto-secundario);
+}
+
+/* --- CARDS DE CONFIGURAÇÃO --- */
+.card-config {
+    background-color: var(--cor-card);
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--cor-borda);
+}
+
+.card-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.icon-box {
+    width: 40px;
+    height: 40px;
+    background-color: rgba(108, 92, 231, 0.2);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 15px;
+    color: var(--cor-destaque-roxo);
+}
+
+.card-title h3 {
+    font-size: 1.1rem;
+}
+
+.card-title p {
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+}
+
+/* --- FORMULÁRIOS --- */
+.grid-inputs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.campo-grupo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+label {
+    font-size: 0.85rem;
+    color: var(--cor-texto-secundario);
+    margin-bottom: 0.5rem;
+}
+
+input,
+textarea {
+    background-color: var(--cor-input);
+    border: 1px solid var(--cor-borda);
+    border-radius: 6px;
+    padding: 0.8rem;
+    color: white;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+input:focus,
+textarea:focus {
+    border-color: var(--cor-destaque-roxo);
+}
+
+textarea {
+    resize: none;
+    height: 100px;
+}
+
+.contador-caracteres {
+    align-self: flex-end;
+    font-size: 0.7rem;
+    color: var(--cor-texto-secundario);
+    margin-top: 5px;
+}
+
+/* --- INPUT COM ÍCONE (REDES SOCIAIS) --- */
+.input-icon-wrapper {
+    position: relative;
+}
+
+.input-icon-wrapper .icone-rede {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+}
+
+.input-icon-wrapper input {
+    padding-left: 35px;
+    width: 100%;
+}
+
+.icone-rede.instagram {
+    color: #e1306c;
+}
+
+.icone-rede.whatsapp {
+    color: #25d366;
+}
+
+/* --- UPLOAD DE IMAGENS --- */
+.secao-uploads {
+    display: flex;
+    gap: 2rem;
+}
+
+.upload-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.preview-circular {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 1px solid var(--cor-borda);
+}
+
+.preview-capa {
+    width: 200px;
+    height: 100px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 1px solid var(--cor-borda);
+}
+
+.btn-upload {
+    background-color: rgba(108, 92, 231, 0.1);
+    color: var(--cor-destaque-roxo);
+    border: 1px solid var(--cor-destaque-roxo);
+    padding: 5px 15px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: 0.3s;
+}
+
+.btn-upload:hover {
+    background-color: rgba(108, 92, 231, 0.2);
+}
+
+.info-upload {
+    font-size: 0.7rem;
+    color: var(--cor-texto-secundario);
+    margin-top: 10px;
+}
+
+/* --- BOTÃO SALVAR --- */
+.footer-acoes {
+    margin-top: 2rem;
+}
+
+.btn-salvar {
+    width: 100%;
+    background-color: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: 0.3s;
+}
+
+.btn-salvar:hover {
+    background-color: #e66e00;
+    transform: translateY(-2px);
+}
+
+.btn-salvar:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* --- FORMULÁRIO DE SENHA --- */
+#form-alterar-senha {
+    border-top: 1px solid var(--cor-borda);
+    padding-top: 15px;
+}
+
+#form-alterar-senha input {
+    width: 100%;
+    max-width: 400px;
+}
+
+#form-alterar-senha .btn-salvar {
+    width: fit-content;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 992px) {
+    .main-content {
+        margin-left: 0;
+        padding: 1.5rem;
+    }
+
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 1rem;
+    }
+
+    .perfil-mini {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .grid-inputs {
+        grid-template-columns: 1fr;
+    }
+
+    .secao-uploads {
+        flex-direction: column;
+        align-items: center;
+    }
+}

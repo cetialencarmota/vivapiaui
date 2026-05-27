@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viva Piauí - Cultura que você sente</title>
+<link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+</head>
+<body class="home-page">
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo-container-small">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Viva Piauí" class="logo-mini">
+                    <div class="logo-text-small">
+                        <h1>Viva <span>PIAUÍ</span></h1>
+                        <p>Cultura que você sente</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <nav class="main-nav">
+            <a href="index.html" class="nav-link active">Mapa</a>
+            <a href="pages/artistas.html" class="nav-link">Artistas</a>
+            <a href="pages/eventos.html" class="nav-link">Eventos</a>
+            <a href="pages/sobre.html" class="nav-link">Sobre</a>
+        </nav>
+
+        <div class="header-right">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar lugares, eventos, artistas...">
+            </div>
+            <div class="user-actions">
+                <div class="user-profile-mini">
+                    <img src="https://i.pravatar.cc/150?u=joao" alt="Avatar">
+                    <span>João Silva <i class="fas fa-chevron-down"></i></span>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="pages/perfil-visitante.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> Meu Perfil
+                        </a>
+                        <a href="pages/artista-configuracoes.html" class="dropdown-item">
+                            <i class="fas fa-cog"></i> Configurações
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="pages/login.html" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <section class="map-explore-section">
+            <div class="explore-sidebar">
+                <h2>Explore o Piauí</h2>
+                <p>Descubra lugares, eventos e histórias que mantêm viva a cultura do nosso estado.</p>
+                <ul class="stats-list">
+                </ul>
+            </div>
+
+            <div class="map-container-wrapper">
+                <div id="map"></div>
+            </div>
+
+            <div class="highlights-sidebar">
+                <div class="sidebar-header">
+                    <h3>Destaques da Semana</h3>
+                </div>
+                <div class="highlight-tabs">
+                    <button class="tab-btn active">Artistas</button>
+                    <button class="tab-btn">Eventos</button>
+                </div>
+                
+                <div class="highlight-cards">
+                </div>
+
+                <div class="event-banner-small">
+                    <div class="event-date"><span class="day">--</span><span class="month">---</span></div>
+                    <div class="event-info">
+                        <h4>Carregando...</h4>
+                        <p><i class="fas fa-map-marker-alt"></i> —</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="bottom-sections-grid">
+            <section class="ra-experiences-section">
+                <div class="section-header">
+                    <h3>Experiências em Realidade Aumentada</h3>
+                    <a href="pages/artistas.html" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="ra-cards-grid">
+                    <div class="ra-card">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1518709268805-4e9042af9f23?q=80&w=300&h=200&auto=format&fit=crop');">
+                            <span class="ra-badge">RA</span>
+                        </div>
+                        <div class="card-content">
+                            <h4>Teatro 4 de Setembro</h4>
+                            <p class="loc"><i class="fas fa-map-marker-alt"></i> Teresina - PI</p>
+                            <p class="desc">História, arquitetura e cultura em um só lugar.</p>
+                        </div>
+                    </div>
+                    <div class="ra-card">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1582555172866-f73bb12a2ab3?q=80&w=300&h=200&auto=format&fit=crop');">
+                            <span class="ra-badge">RA</span>
+                        </div>
+                        <div class="card-content">
+                            <h4>Cerâmica do Piauí</h4>
+                            <p class="loc"><i class="fas fa-map-marker-alt"></i> Teresina - PI</p>
+                            <p class="desc">A tradição do barro contada em 3D.</p>
+                        </div>
+                    </div>
+                    <div class="ra-card">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1548115184-bc65ee97b69e?q=80&w=300&h=200&auto=format&fit=crop');">
+                            <span class="ra-badge">RA</span>
+                        </div>
+                        <div class="card-content">
+                            <h4>Igreja do Amparo</h4>
+                            <p class="loc"><i class="fas fa-map-marker-alt"></i> Picos - PI</p>
+                            <p class="desc">Explore cada detalhe dessa joia histórica.</p>
+                        </div>
+                    </div>
+                    <div class="ra-card">
+                        <div class="card-img" style="background-image: url('https://images.unsplash.com/photo-1503220317375-aaad61436b1b?q=80&w=300&h=200&auto=format&fit=crop');">
+                            <span class="ra-badge">RA</span>
+                        </div>
+                        <div class="card-content">
+                            <h4>Parque da Serra da Capivara</h4>
+                            <p class="loc"><i class="fas fa-map-marker-alt"></i> São Raimundo Nonato - PI</p>
+                            <p class="desc">Arte rupestre e história milenar.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="artists-section">
+                <div class="section-header">
+                    <h3>Artistas do Piauí</h3>
+                    <a href="pages/artistas.html" class="view-all">Ver todos <i class="fas fa-arrow-right"></i></a>
+                </div>
+                <div class="artists-cards-grid">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer class="main-footer">
+        <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-sun"></i></div>
+            <div class="benefit-text">
+                <strong>Conecte-se à cultura viva</strong>
+                <p>Histórias, lugares e tradições que fazem do Piauí um lugar único.</p>
+            </div>
+        </div>
+        <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-microchip"></i></div>
+            <div class="benefit-text">
+                <strong>Explore com tecnologia</strong>
+                <p>Experiências imersivas em RA que aproximam você da nossa cultura.</p>
+            </div>
+        </div>
+        <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-users"></i></div>
+            <div class="benefit-text">
+                <strong>Valorize nossos talentos</strong>
+                <p>Conheça, apoie e compartilhe os artistas do nosso estado.</p>
+            </div>
+        </div>
+        <div class="benefit-item">
+            <div class="benefit-icon"><i class="fas fa-calendar-check"></i></div>
+            <div class="benefit-text">
+                <strong>Viva eventos inesquecíveis</strong>
+                <p>Festas, celebrações e encontros que mantêm nossa cultura viva.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/header.js"></script>
+    <script src="assets/js/mapa.js"></script>
+    <script src="assets/js/home.js"></script>
+</body>
+</html>

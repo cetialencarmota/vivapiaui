@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Artistas - Viva Piauí</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/artists.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="artists-page">
+    <!-- HEADER -->
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo-container-small">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="Viva Piauí" class="logo-mini">
+                    <div class="logo-text-small">
+                        <h1>Viva <span>PIAUÍ</span></h1>
+                        <p>Cultura que você sente</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <nav class="main-nav">
+            <a href="../index.html" class="nav-link">Mapa</a>
+            <a href="artistas.html" class="nav-link active">Artistas</a>
+            <a href="eventos.html" class="nav-link">Eventos</a>
+            <a href="sobre.html" class="nav-link">Sobre</a>
+        </nav>
+
+        <div class="header-right">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar lugares, eventos, artistas...">
+            </div>
+            <div class="user-actions">
+                <div class="user-profile-mini">
+                    <img src="https://i.pravatar.cc/150?u=joao" alt="Avatar">
+                    <span>João Silva <i class="fas fa-chevron-down"></i></span>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="perfil-visitante.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> Meu Perfil
+                        </a>
+                        <a href="artista-configuracoes.html" class="dropdown-item">
+                            <i class="fas fa-cog"></i> Configurações
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="breadcrumb">Início > Artistas</div>
+        
+        <section class="hero-section-artists">
+            <div class="hero-content">
+                <h1>Conheça quem faz<br>nossa <span>cultura</span></h1>
+                <p>Encontre artistas piauienses e apoie quem mantém nossas tradições vivas.</p>
+            </div>
+        </section>
+
+        <div class="artists-layout">
+            <!-- Sidebar de Filtros -->
+            <aside class="filters-sidebar">
+                <div class="filter-group">
+                    <h4>Categorias</h4>
+                    <ul class="filter-list">
+                        <li class="active"><i class="fas fa-th-large"></i> Todos <span>128</span></li>
+                        <li><i class="fas fa-hands"></i> Artesanato <span>45</span></li>
+                        <li><i class="fas fa-music"></i> Música <span>28</span></li>
+                        <li><i class="fas fa-paint-brush"></i> Artes Visuais <span>20</span></li>
+                        <li><i class="fas fa-book"></i> Literatura <span>15</span></li>
+                        <li><i class="fas fa-utensils"></i> Gastronomia <span>20</span></li>
+                    </ul>
+                </div>
+
+                <div class="filter-group">
+                    <h4>Ordenar por</h4>
+                    <select class="form-control-small" id="ordenar-artistas">
+                        <option value="recentes">Mais recentes</option>
+                        <option value="nome">Nome (A-Z)</option>
+                        <option value="apoiados">Mais apoiados</option>
+                    </select>
+                </div>
+
+                <div class="promo-support-card">
+                    <i class="fas fa-heart"></i>
+                    <h4>Apoie nossos artistas</h4>
+                    <p>Seu apoio faz a cultura do Piauí acontecer.</p>
+                    <a href="#">Saiba como apoiar <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </aside>
+
+            <!-- Grid de Artistas -->
+            <section class="artists-results">
+                <div class="results-header">
+                    <h3>Artistas do Piauí</h3>
+                    <span>128 artistas encontrados</span>
+                </div>
+
+                <div class="artists-grid-main">
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/favoritos.js"></script>
+    <script src="../assets/js/artistas.js"></script>
+</body>
+</html>

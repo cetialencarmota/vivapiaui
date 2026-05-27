@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configurações - Viva Piauí</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/css/artista-configuracoes.css">
+</head>
+<body>
+
+    <aside class="sidebar">
+        <div class="logo-container">
+            <a href="../index.html">
+                <img src="../assets/images/logo.png" alt="Logo Viva Piauí" class="logo-icon">
+                <div class="logo-text">
+                    <h1>Viva <span>PIAUÍ</span></h1>
+                    <p>Cultura que você sente</p>
+                </div>
+            </a>
+        </div>
+
+        <nav class="nav-menu">
+            <a href="dashboard-artista.html" class="nav-item">
+                <i class="fas fa-th-large"></i> Dashboard
+            </a>
+            <a href="portfolio-artista.html" class="nav-item">
+                <i class="fas fa-image"></i> Meu Portfólio
+            </a>
+            <a href="artista-configuracoes.html" class="nav-item active">
+                <i class="fas fa-cog"></i> Configurações
+            </a>
+        </nav>
+
+        <div class="perfil-mini">
+            <img src="https://via.placeholder.com/150" alt="Sua foto" class="foto-mini" id="sidebar-foto">
+            <span class="nome-mini">Irmã Deusa</span>
+            <span class="tag-artista">Artista</span>
+            <a href="login.html" class="btn-sair">
+                <i class="fas fa-sign-out-alt"></i> Sair da conta
+            </a>
+        </div>
+    </aside>
+
+    <main class="main-content">
+        <header class="header-pagina">
+            <h2>Configurações</h2>
+            <p>Gerencie seu perfil, informações de apoio e preferências de conta.</p>
+        </header>
+
+        <form id="form-configuracoes">
+
+            <section class="card-config">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Perfil Público</h3>
+                        <p>Essas informações aparecem no seu perfil público.</p>
+                    </div>
+                </div>
+
+                <div class="grid-inputs">
+                    <div class="coluna-texto">
+                        <div class="campo-grupo">
+                            <label for="nome-artistico">Nome artístico</label>
+                            <input type="text" id="nome-artistico" value="Irmã Deusa">
+                        </div>
+                        <div class="campo-grupo">
+                            <label for="biografia">Biografia</label>
+                            <textarea id="biografia" maxlength="300">Artesã e guardiã da cultura popular piauiense. Transformo o barro, o colorido e as tradições em arte que conta histórias e preserva nossas raízes.</textarea>
+                            <span class="contador-caracteres">142/300</span>
+                        </div>
+                    </div>
+
+                    <div class="secao-uploads">
+                        <div class="upload-box">
+                            <label>Foto de perfil</label>
+                            <img src="https://via.placeholder.com/150" alt="Foto de Perfil" class="preview-circular" id="preview-foto">
+                            <input type="file" id="input-foto" accept="image/jpeg,image/png" hidden>
+                            <button type="button" class="btn-upload" id="btn-upload-foto">
+                                <i class="fas fa-camera"></i> Alterar foto
+                            </button>
+                            <p class="info-upload">Formatos aceitos: JPG, PNG. Máx. 2MB</p>
+                        </div>
+                        <div class="upload-box">
+                            <label>Imagem de capa</label>
+                            <img src="https://via.placeholder.com/600x200" alt="Imagem de Capa" class="preview-capa" id="preview-capa">
+                            <input type="file" id="input-capa" accept="image/jpeg,image/png" hidden>
+                            <button type="button" class="btn-upload" id="btn-upload-capa">
+                                <i class="fas fa-image"></i> Alterar capa
+                            </button>
+                            <p class="info-upload">Formatos aceitos: JPG, PNG. Máx. 5MB</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card-config">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-heart"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Informações de Apoio</h3>
+                        <p>Adicione sua chave PIX para receber apoios e doações.</p>
+                    </div>
+                </div>
+                <div class="campo-grupo">
+                    <label for="chave-pix">Chave PIX</label>
+                    <input type="text" id="chave-pix" value="irma.deusa@pix.com.br">
+                    <p class="info-upload">Essa chave será exibida no seu perfil para que apoiadores possam contribuir.</p>
+                </div>
+            </section>
+
+            <section class="card-config">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-share-alt"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Redes Sociais</h3>
+                        <p>Conecte suas redes para que as pessoas possam te encontrar.</p>
+                    </div>
+                </div>
+                <div class="grid-inputs">
+                    <div class="campo-grupo">
+                        <label for="instagram">Instagram</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fab fa-instagram icone-rede instagram"></i>
+                            <input type="text" id="instagram" value="@irmadeusa.artesanato">
+                        </div>
+                    </div>
+                    <div class="campo-grupo">
+                        <label for="whatsapp">WhatsApp</label>
+                        <div class="input-icon-wrapper">
+                            <i class="fab fa-whatsapp icone-rede whatsapp"></i>
+                            <input type="text" id="whatsapp" value="(86) 99999-9999">
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card-config">
+                <div class="card-header">
+                    <div class="icon-box">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="card-title">
+                        <h3>Segurança</h3>
+                        <p>Proteja sua conta e mantenha seus dados seguros.</p>
+                    </div>
+                </div>
+                <div class="campo-grupo">
+                    <label>Senha</label>
+                    <p class="info-upload" style="margin-bottom: 10px;">Altere sua senha periodicamente para maior segurança.</p>
+                    <button type="button" class="btn-upload" id="btn-alterar-senha" style="width: fit-content;">
+                        <i class="fas fa-lock"></i> Alterar senha
+                    </button>
+                    <div id="form-alterar-senha" style="display: none; margin-top: 15px;">
+                        <div class="campo-grupo" style="margin-bottom: 10px;">
+                            <label for="nova-senha">Nova senha</label>
+                            <input type="password" id="nova-senha" placeholder="Mínimo 6 caracteres">
+                        </div>
+                        <div class="campo-grupo" style="margin-bottom: 10px;">
+                            <label for="confirmar-senha">Confirmar nova senha</label>
+                            <input type="password" id="confirmar-senha" placeholder="Repita a nova senha">
+                        </div>
+                        <div id="msg-senha-erro" style="color: #e74c3c; font-size: 0.85rem; margin-bottom: 10px; display: none;"></div>
+                        <button type="button" class="btn-salvar" id="btn-salvar-senha" style="width: fit-content; padding: 0.6rem 1.5rem; font-size: 0.9rem;">
+                            <i class="fas fa-check"></i> Salvar senha
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <div id="erro-global" style="color: #e74c3c; font-size: 0.9rem; margin-bottom: 1rem; display: none;"></div>
+            <div class="footer-acoes">
+                <button type="submit" class="btn-salvar">
+                    <i class="fas fa-save"></i> Salvar Alterações
+                </button>
+            </div>
+        </form>
+    </main>
+
+    <script src="../assets/js/api.js"></script>
+    <script>window._GUARD_PERFIS = ['artista', 'admin'];</script>
+    <script src="../assets/js/auth-guard.js"></script>
+    <script src="../assets/js/artista-configuracoes.js"></script>
+</body>
+</html>

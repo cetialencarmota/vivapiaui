@@ -1,0 +1,255 @@
+/* --- ARTISTS PAGE STYLES --- */
+.breadcrumb {
+    font-size: 0.85rem;
+    color: var(--cor-texto-escuro);
+    margin-bottom: 20px;
+}
+
+.hero-section-artists {
+    margin-bottom: 40px;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    line-height: 1.1;
+    margin-bottom: 15px;
+}
+
+.hero-content h1 span {
+    color: var(--cor-primaria);
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: var(--cor-texto-escuro);
+    max-width: 500px;
+}
+
+.artists-layout {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 40px;
+}
+
+.filters-sidebar {
+    background: #1A1A2E;
+    border-radius: 12px;
+    padding: 25px;
+    height: fit-content;
+}
+
+.filter-group {
+    margin-bottom: 30px;
+}
+
+.filter-group h4 {
+    margin-bottom: 15px;
+    font-size: 1rem;
+}
+
+.filter-list {
+    list-style: none;
+}
+
+.filter-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 15px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: var(--cor-texto-escuro);
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+    transition: all 0.2s;
+}
+
+.filter-list li.active {
+    background: var(--cor-primaria);
+    color: white;
+}
+
+.filter-list li span {
+    margin-left: auto;
+    font-size: 0.8rem;
+    opacity: 0.7;
+}
+
+.form-control-small {
+    width: 100%;
+    background: #12121B;
+    border: 1px solid #333;
+    color: white;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.promo-support-card {
+    background: rgba(255, 122, 0, 0.05);
+    border: 1px solid rgba(255, 122, 0, 0.2);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+}
+
+.promo-support-card > i {
+    font-size: 2rem;
+    color: var(--cor-primaria);
+    margin-bottom: 15px;
+}
+
+.promo-support-card a i {
+    font-size: 0.75rem;
+    vertical-align: middle;
+    margin-left: 5px;
+}
+
+.promo-support-card h4 {
+    margin-bottom: 10px;
+}
+
+.promo-support-card p {
+    font-size: 0.8rem;
+    color: #888;
+    margin-bottom: 15px;
+}
+
+.promo-support-card a {
+    color: var(--cor-primaria);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+/* Artists Results */
+.results-header {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 30px;
+}
+
+.results-header span {
+    font-size: 0.85rem;
+    color: #666;
+}
+
+.view-map-link {
+    margin-left: auto;
+    color: var(--cor-destaque);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.artists-grid-main {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+}
+
+.artist-card-full {
+    background: #1A1A2E;
+    border-radius: 15px;
+    overflow: hidden;
+    border: 1px solid #333;
+    transition: transform 0.3s;
+}
+
+.artist-card-full:hover {
+    transform: translateY(-5px);
+}
+
+.card-img-wrapper {
+    position: relative;
+    height: 200px;
+}
+
+.card-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-img-placeholder {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, #FF7A00, #e86200);
+    color: #fff;
+    font-size: 3.5rem;
+    font-weight: 700;
+}
+
+.like-btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    background: rgba(0,0,0,0.5);
+    border: none;
+    color: white;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.like-btn.ativo {
+    background: #FF7A00;
+    color: #fff;
+}
+.like-btn.ativo i {
+    color: #fff;
+}
+
+.card-body {
+    padding: 20px;
+}
+
+.card-body h4 {
+    font-size: 1.1rem;
+    margin-bottom: 5px;
+}
+
+.tagline {
+    color: var(--cor-primaria);
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.card-body .desc {
+    font-size: 0.85rem;
+    color: #888;
+    margin-bottom: 20px;
+}
+
+.card-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-support-small {
+    flex: 1;
+    background: var(--cor-primaria);
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-outline-small {
+    flex: 1;
+    background: transparent;
+    border: 1px solid #444;
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.9rem;
+}

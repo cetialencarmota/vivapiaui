@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Viva Piauí - Dashboard do Artista</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/dashboard.css">
+    <link rel="stylesheet" href="../assets/css/modals.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- BARRA LATERAL -->
+        <aside class="sidebar">
+            <div class="logo-container">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="Logo Viva Piauí" class="logo-icon">
+                    <div class="logo-text">
+                        <h1>Viva <span>PIAUÍ</span></h1>
+                        <p>Cultura que você sente</p>
+                    </div>
+                </a>
+            </div>
+
+            <nav class="nav-menu">
+                <ul>
+                    <li class="active">
+                        <a href="#">
+                            <span class="icon">⊞</span> Dashboard
+                        </a>
+                    </li>
+                    <li>
+                        <a href="portfolio-artista.html">
+                            <span class="icon">🖼</span> Meu Portfólio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="artista-configuracoes.html">
+                            <span class="icon">⚙</span> Configurações
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="sidebar-footer">
+                <div class="artist-profile">
+                    <img src="https://images.unsplash.com/photo-1531123897727-8f129e16fd3c?auto=format&fit=crop&w=120&q=80" alt="Foto do artista" class="profile-img">
+                    <div class="profile-info">
+                        <h3>Irmã Deusa</h3>
+                        <span class="badge">Artista</span>
+                    </div>
+                </div>
+                <button class="btn-logout">
+                    <span class="icon">↩</span> Sair da conta
+                </button>
+            </div>
+        </aside>
+
+        <!-- CONTEÚDO PRINCIPAL -->
+        <main class="main-content">
+            <header class="content-header">
+                <h2>Olá! 👋</h2>
+                <p>Que bom ter você aqui. Continue compartilhando sua arte com o Piauí.</p>
+            </header>
+
+            <!-- CARDS DE ESTATÍSTICAS -->
+            <section class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon purple">🖼</div>
+                    <div class="stat-data">
+                        <p>Total de Obras</p>
+                        <h3 id="statObras">0</h3>
+                    </div>
+                    <div class="stat-bg-icon">🖼</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon pink">❤</div>
+                    <div class="stat-data">
+                        <p>Total de Apoios</p>
+                        <h3 id="statApoios">0</h3>
+                    </div>
+                    <div class="stat-bg-icon">❤</div>
+                </div>
+            </section>
+
+            <!-- MEU PORTFÓLIO -->
+            <section class="portfolio-section">
+                <div class="section-header">
+                    <h3>Meu Portfólio</h3>
+                    <a href="portfolio-artista.html" class="view-all">Ver todas as obras ↗</a>
+                </div>
+                <div class="portfolio-grid">
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1520408222757-6f9f95d87d5d?auto=format&fit=crop&w=400&q=80" alt="Cerâmicas">
+                        <div class="card-info">
+                            <h4>Cerâmicas</h4>
+                            <p>12 obras</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?auto=format&fit=crop&w=400&q=80" alt="Pinturas">
+                        <div class="card-info">
+                            <h4>Pinturas</h4>
+                            <p>8 obras</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1610701596007-11502861dcfa?auto=format&fit=crop&w=400&q=80" alt="Artesanato">
+                        <div class="card-info">
+                            <h4>Artesanato</h4>
+                            <p>15 obras</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-card">
+                        <img src="https://images.unsplash.com/photo-1590422443890-2a39620b8524?auto=format&fit=crop&w=400&q=80" alt="Fotografias">
+                        <div class="card-info">
+                            <h4>Fotografias</h4>
+                            <p>6 obras</p>
+                        </div>
+                    </div>
+                    <div class="add-card">
+                        <div class="plus-icon">+</div>
+                        <p>Adicionar nova obra</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- MENSAGENS -->
+            <section class="messages-section">
+                <div class="section-header">
+                    <h3>Mensagens</h3>
+                </div>
+                <div class="messages-list">
+                    <div class="message-item">
+                        <div class="user-avatar">
+                            <span class="status-dot"></span>
+                            <img src="https://i.pravatar.cc/150?u=maria" alt="Maria Silva">
+                        </div>
+                        <div class="message-content">
+                            <span class="user-name">Maria Silva</span>
+                            <p class="message-text">Olá! Tenho interesse em adquirir uma peça.</p>
+                        </div>
+                        <div class="message-meta">
+                            <span class="time">Há 1 hora</span>
+                            <span class="arrow">›</span>
+                        </div>
+                    </div>
+                    <div class="message-item">
+                        <div class="user-avatar">
+                            <span class="status-dot"></span>
+                            <img src="https://i.pravatar.cc/150?u=joao" alt="João Pereira">
+                        </div>
+                        <div class="message-content">
+                            <span class="user-name">João Pereira</span>
+                            <p class="message-text">Parabéns pelo seu trabalho! As peças são lindas.</p>
+                        </div>
+                        <div class="message-meta">
+                            <span class="time">Há 3 horas</span>
+                            <span class="arrow">›</span>
+                        </div>
+                    </div>
+                    <div class="message-item">
+                        <div class="user-avatar">
+                            <span class="status-dot"></span>
+                            <img src="https://i.pravatar.cc/150?u=ana" alt="Ana Clara">
+                        </div>
+                        <div class="message-content">
+                            <span class="user-name">Ana Clara</span>
+                            <p class="message-text">Gostaria de saber mais sobre a obra "Raízes do Piauí".</p>
+                        </div>
+                        <div class="message-meta">
+                            <span class="time">Há 1 dia</span>
+                            <span class="arrow">›</span>
+                        </div>
+                    </div>
+                    <div class="message-item">
+                        <div class="user-avatar">
+                            <span class="status-dot"></span>
+                            <img src="https://i.pravatar.cc/150?u=carlos" alt="Carlos Lima">
+                        </div>
+                        <div class="message-content">
+                            <span class="user-name">Carlos Lima</span>
+                            <p class="message-text">Vocês fazem envios para outros estados?</p>
+                        </div>
+                        <div class="message-meta">
+                            <span class="time">Há 2 dias</span>
+                            <span class="arrow">›</span>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../assets/js/api.js"></script>
+    <script>window._GUARD_PERFIS = ['artista', 'admin'];</script>
+    <script src="../assets/js/auth-guard.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/modals.js"></script>
+    <script src="../assets/js/dashboard.js"></script>
+
+    <!-- MODAL VER MENSAGEM -->
+    <div id="modal-ver-mensagem" class="modal-overlay">
+        <div class="modal-content">
+            <button class="modal-close" id="close-modal-msg-view">&times;</button>
+            <div class="msg-view-header">
+                <div class="msg-view-avatar">
+                    <img id="msgViewAvatar" src="" alt="Avatar">
+                </div>
+                <div class="msg-view-info">
+                    <h3 id="msgViewName">—</h3>
+                    <span id="msgViewEmail" class="msg-view-email"></span>
+                    <span id="msgViewDate" class="msg-view-date"></span>
+                </div>
+                <span id="msgViewUnread" class="msg-view-unread-badge">Não lida</span>
+            </div>
+            <div class="msg-view-body">
+                <p id="msgViewText" class="msg-view-text"></p>
+            </div>
+            <div class="msg-view-actions">
+                <button class="btn-primary" id="btnMarcarLida" style="flex:1;">
+                    <i class="fas fa-check-double"></i> Marcar como lida
+                </button>
+                <button class="btn-secondary" id="btnFecharMsgView" style="flex:1;">
+                    Fechar
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

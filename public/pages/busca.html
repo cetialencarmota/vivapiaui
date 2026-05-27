@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Busca - Viva Piauí</title>
+    <link rel="stylesheet" href="../assets/css/style.css">
+    <link rel="stylesheet" href="../assets/css/busca.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body class="busca-page">
+    <header class="main-header">
+        <div class="header-left">
+            <div class="logo-container-small">
+                <a href="../index.html">
+                    <img src="../assets/images/logo.png" alt="Viva Piauí" class="logo-mini">
+                    <div class="logo-text-small">
+                        <h1>Viva <span>PIAUÍ</span></h1>
+                        <p>Cultura que você sente</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+        <nav class="main-nav">
+            <a href="../index.html" class="nav-link">Mapa</a>
+            <a href="artistas.html" class="nav-link">Artistas</a>
+            <a href="eventos.html" class="nav-link">Eventos</a>
+            <a href="sobre.html" class="nav-link">Sobre</a>
+        </nav>
+
+        <div class="header-right">
+            <div class="search-bar">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Buscar lugares, eventos, artistas..." id="busca-input">
+            </div>
+            <div class="user-actions">
+                <div class="user-profile-mini">
+                    <img src="https://i.pravatar.cc/150?u=joao" alt="Avatar">
+                    <span>João Silva <i class="fas fa-chevron-down"></i></span>
+                    <div class="dropdown-menu" id="dropdownMenu">
+                        <a href="perfil-visitante.html" class="dropdown-item">
+                            <i class="fas fa-user"></i> Meu Perfil
+                        </a>
+                        <a href="artista-configuracoes.html" class="dropdown-item">
+                            <i class="fas fa-cog"></i> Configurações
+                        </a>
+                        <div class="dropdown-divider"></div>
+                        <a href="login.html" class="dropdown-item">
+                            <i class="fas fa-sign-out-alt"></i> Sair
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main class="content-wrapper">
+        <div class="breadcrumb"><a href="../index.html">Início</a> <i class="fas fa-chevron-right"></i> <span id="breadcrumb-text">Busca</span></div>
+
+        <section class="busca-hero">
+            <h1>Resultados da busca</h1>
+            <p id="busca-summary">Carregando...</p>
+        </section>
+
+        <div class="busca-tabs">
+            <button class="tab-btn active" data-tab="todos">Todos</button>
+            <button class="tab-btn" data-tab="artistas">Artistas</button>
+            <button class="tab-btn" data-tab="eventos">Eventos</button>
+            <button class="tab-btn" data-tab="pontos">Pontos Culturais</button>
+        </div>
+
+        <div class="busca-results" id="busca-results">
+            <div class="loading-spinner"><i class="fas fa-spinner fa-spin"></i> Buscando...</div>
+        </div>
+    </main>
+
+    <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/app.js"></script>
+    <script src="../assets/js/header.js"></script>
+    <script src="../assets/js/busca.js"></script>
+</body>
+</html>

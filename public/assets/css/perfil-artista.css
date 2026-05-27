@@ -1,0 +1,631 @@
+/* --- PROFILE PAGE (PERFIL DO ARTISTA) --- */
+.artist-profile-page .breadcrumb {
+    padding: 20px 40px;
+    font-size: 0.85rem;
+    color: var(--cor-texto-escuro);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.artist-profile-page .breadcrumb i {
+    font-size: 0.7rem;
+}
+
+.artist-profile-page .breadcrumb a {
+    color: var(--cor-destaque);
+    text-decoration: none;
+}
+
+.artist-profile-page .breadcrumb span {
+    color: var(--cor-texto-claro);
+}
+
+.profile-hero {
+    margin-bottom: 40px;
+}
+
+.profile-hero-bg {
+    background-size: cover;
+    background-position: center;
+    padding: 60px 40px;
+}
+
+.profile-hero-content {
+    max-width: 1600px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+.profile-pic-container {
+    position: relative;
+}
+
+.profile-pic {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 4px solid var(--cor-primaria);
+    object-fit: cover;
+}
+
+.verified-badge {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: #6366f1;
+    color: white;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.8rem;
+    border: 2px solid var(--cor-secundaria);
+}
+
+.artist-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 5px;
+}
+
+.artist-title {
+    color: var(--cor-primaria);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.artist-location {
+    color: var(--cor-texto-escuro);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+}
+
+.artist-location i {
+    margin-right: 5px;
+}
+
+.social-links {
+    display: flex;
+    gap: 15px;
+}
+
+.social-links a {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.social-links a:hover {
+    background-color: var(--cor-primaria);
+}
+
+.profile-hero-actions {
+    display: flex;
+    gap: 15px;
+    align-items: flex-end;
+}
+
+.profile-hero-actions .btn-primary,
+.profile-hero-actions .btn-secondary {
+    color: white;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 6px 18px;
+    height: 36px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    line-height: 1;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    background-color: transparent;
+}
+
+.profile-hero-actions .btn-primary {
+    background: var(--cor-primaria);
+    border-color: var(--cor-primaria);
+}
+
+.support-card .btn-primary {
+    background: linear-gradient(90deg, #FF7A00 0%, #FF9500 100%);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 24px;
+    color: white;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    transition: transform 0.2s, opacity 0.2s;
+    width: 100%;
+}
+
+.support-card .btn-primary:hover {
+    transform: scale(1.02);
+    opacity: 0.9;
+}
+
+.profile-hero-actions .btn-secondary {
+    background-color: rgba(26, 28, 46, 0.8);
+    border-color: var(--border-color);
+}
+
+.profile-hero-actions .btn-secondary:hover {
+    background-color: rgba(26, 28, 46, 1);
+}
+
+.profile-layout {
+    display: grid;
+    grid-template-columns: 350px 1fr;
+    gap: 40px;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding: 0 40px 60px;
+}
+
+.profile-sidebar .card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    padding: 25px;
+    margin-bottom: 25px;
+}
+
+.about-card h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+}
+
+.about-card h3 i {
+    color: var(--cor-primaria);
+}
+
+.about-card p {
+    color: var(--cor-texto-escuro);
+    font-size: 0.9rem;
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.about-card p:last-child {
+    margin-bottom: 0;
+}
+
+.support-card {
+    border: 1px solid rgba(255, 122, 0, 0.3);
+    background: linear-gradient(to bottom, var(--card-bg), rgba(255, 122, 0, 0.05));
+}
+
+.support-card .support-icon {
+    font-size: 1.5rem;
+    color: var(--cor-primaria);
+}
+
+.support-card .support-text h4 {
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.support-card .support-text p {
+    font-size: 0.85rem;
+    color: var(--cor-texto-escuro);
+}
+
+.support-card .full-width {
+    width: 100%;
+    justify-content: center;
+}
+
+.artist-details {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px 10px;
+}
+
+.detail-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.detail-item i {
+    font-size: 1.2rem;
+    color: var(--cor-texto-escuro);
+    width: 25px;
+}
+
+.detail-label {
+    display: block;
+    font-size: 0.75rem;
+    color: var(--cor-texto-escuro);
+}
+
+.detail-value {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.profile-content .section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-content .section-header h3 {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.3rem;
+}
+
+.profile-content .section-header h3 i {
+    color: var(--cor-texto-escuro);
+}
+
+.profile-content .view-all {
+    font-size: 0.85rem;
+    color: var(--cor-destaque);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.works-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-bottom: 40px;
+}
+
+.work-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 16px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.work-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.work-card-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+}
+
+.work-card-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s;
+}
+
+.work-card:hover .work-card-img img {
+    transform: scale(1.05);
+}
+
+.work-card-placeholder {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #FF7A00, #e86200);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+}
+
+.work-card-body {
+    padding: 14px 16px 18px;
+}
+
+.work-card-titulo {
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--cor-texto-claro);
+    margin-bottom: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.work-card-descricao {
+    font-size: 0.82rem;
+    color: var(--cor-texto-escuro);
+    line-height: 1.5;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Modal de detalhes da obra */
+#modal-obra-detalhe.modal-overlay {
+    display: none;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 2000;
+    backdrop-filter: blur(5px);
+}
+
+#modal-obra-detalhe.modal-overlay.active {
+    display: flex;
+}
+
+#modal-obra-detalhe .modal-content {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    width: 90%;
+    max-width: 800px;
+    border-radius: 24px;
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+#modal-obra-detalhe .modal-close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: rgba(0, 0, 0, 0.5);
+    border: none;
+    color: #fff;
+    font-size: 1.5rem;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.2s;
+}
+
+#modal-obra-detalhe .modal-close:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-obra-body {
+    display: flex;
+    min-height: 400px;
+}
+
+.modal-obra-imagem {
+    flex: 1;
+    min-width: 0;
+}
+
+.modal-obra-imagem img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.modal-obra-info {
+    flex: 1;
+    padding: 40px 36px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-obra-info h2 {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--cor-texto-claro);
+    margin: 0;
+}
+
+.modal-obra-categoria {
+    display: inline-block;
+    background: rgba(255, 122, 0, 0.15);
+    color: var(--cor-primaria);
+    padding: 4px 14px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    align-self: flex-start;
+}
+
+.modal-obra-info p {
+    font-size: 0.95rem;
+    color: var(--cor-texto-escuro);
+    line-height: 1.7;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .modal-obra-body {
+        flex-direction: column;
+    }
+
+    .modal-obra-imagem {
+        max-height: 300px;
+    }
+
+    .modal-obra-info {
+        padding: 24px 20px;
+    }
+}
+
+.mt-4 {
+    margin-top: 40px;
+}
+
+.events-row {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.event-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.event-card .event-date {
+    background-color: var(--cor-primaria);
+    color: white;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: 700;
+    font-size: 1rem;
+    min-width: 70px;
+    display: flex;
+    flex-direction: column;
+}
+
+.event-card .event-date span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+}
+
+.event-card .event-thumb {
+    width: 120px;
+    height: 80px;
+    border-radius: 8px;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+}
+
+.event-card .event-info h4 {
+    margin-bottom: 5px;
+    font-size: 1rem;
+}
+
+.event-card .event-info p {
+    font-size: 0.85rem;
+    color: var(--cor-texto-escuro);
+    margin-bottom: 10px;
+}
+
+.event-card .badge {
+    font-size: 0.75rem;
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-weight: 600;
+}
+
+.event-card .badge.confirmed {
+    background-color: rgba(99, 102, 241, 0.2);
+    color: #818cf8;
+}
+
+.event-card .badge.participant {
+    background-color: rgba(59, 63, 92, 0.5);
+    color: var(--cor-texto-escuro);
+}
+
+@media (max-width: 1024px) {
+    .profile-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .profile-hero-content {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .profile-header {
+        flex-direction: column;
+        margin-bottom: 20px;
+    }
+
+    .profile-hero-actions {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .works-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .artist-profile-page .breadcrumb {
+        padding: 20px;
+    }
+
+    .profile-hero-bg {
+        padding: 40px 20px;
+    }
+
+    .profile-pic {
+        width: 120px;
+        height: 120px;
+    }
+
+    .artist-info h1 {
+        font-size: 1.8rem;
+    }
+
+    .profile-layout {
+        padding: 0 20px 40px;
+    }
+
+    .works-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .event-card {
+        flex-wrap: wrap;
+    }
+
+    .event-card .event-thumb {
+        width: 100%;
+        height: 150px;
+    }
+}
