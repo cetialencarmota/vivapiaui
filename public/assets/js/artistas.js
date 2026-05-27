@@ -1,14 +1,36 @@
+const CATEGORIAS_CONHECIDAS = [
+  'Artesanato', 'Música', 'Artes Visuais', 'Literatura', 'Gastronomia',
+  'Dança', 'Teatro', 'Fotografia'
+];
+
+const ICONES_CATEGORIA = {
+  'Artesanato': 'fa-hands',
+  'Música': 'fa-music',
+  'Artes Visuais': 'fa-paint-brush',
+  'Literatura': 'fa-book',
+  'Gastronomia': 'fa-utensils',
+  'Dança': 'fa-shoe-prints',
+  'Teatro': 'fa-masks-theater',
+  'Fotografia': 'fa-camera',
+  'Outros': 'fa-th-large'
+};
+
 let todosArtistas = [];
 let filtroCategoria = null;
 let termoBusca = '';
 let ordenacaoAtual = 'recentes';
+
+function categoriaParaGrupo(cat) {
+  if (!cat) return 'Outros';
+  if (CATEGORIAS_CONHECIDAS.includes(cat)) return cat;
+  return 'Outros';
+}
 
 async function inicializarPaginaArtistas() {
   let grid = document.querySelector('.artists-grid-main');
   let contador = document.querySelector('.results-header span');
   if (!grid) return;
 
-  /* Read busca from URL (set by global header search) */
   let params = new URLSearchParams(window.location.search);
   let buscaParam = params.get('busca');
   if (buscaParam) {
@@ -27,7 +49,6 @@ async function inicializarPaginaArtistas() {
     console.error('Erro ao carregar artistas:', err);
   }
 
-  /* Search input */
   let searchInput = document.querySelector('.search-bar input');
   if (searchInput) {
     searchInput.addEventListener('input', function () {
@@ -36,7 +57,6 @@ async function inicializarPaginaArtistas() {
     });
   }
 
-  /* Category click */
   let filterList = document.querySelector('.filter-list');
   if (filterList) {
     filterList.addEventListener('click', function (e) {
@@ -50,7 +70,6 @@ async function inicializarPaginaArtistas() {
     });
   }
 
-  /* Sort select */
   let sortSelect = document.getElementById('ordenar-artistas');
   if (sortSelect) {
     sortSelect.addEventListener('change', function () {
@@ -63,34 +82,23 @@ async function inicializarPaginaArtistas() {
 function renderizarCategorias(artistas) {
   let map = {};
   artistas.forEach(function (a) {
-    let cat = a.categoria_artistica || 'Outros';
-    if (!map[cat]) map[cat] = 0;
-    map[cat]++;
+    let grupo = categoriaParaGrupo(a.categoria_artistica);
+    if (!map[grupo]) map[grupo] = 0;
+    map[grupo]++;
   });
-
-  let icones = {
-    'Artesanato': 'fa-hands',
-    'Música': 'fa-music',
-    'Artes Visuais': 'fa-paint-brush',
-    'Literatura': 'fa-book',
-    'Gastronomia': 'fa-utensils',
-    'Dança': 'fa-shoe-prints',
-    'Teatro': 'fa-masks-theater',
-    'Fotografia': 'fa-camera',
-    'Artesanato': 'fa-hands',
-    'Outros': 'fa-th-large'
-  };
 
   let html = '<li class="active" data-categoria=""><i class="fas fa-th-large"></i> Todos <span>' + artistas.length + '</span></li>';
-  let keys = Object.keys(map).sort();
-  keys.forEach(function (cat) {
-    if (cat === 'Outros') return;
-    let icon = icones[cat] || 'fa-star';
-    html += '<li data-categoria="' + cat.replace(/"/g, '&quot;') + '"><i class="fas ' + icon + '"></i> ' + cat + ' <span>' + map[cat] + '</span></li>';
+
+  CATEGORIAS_CONHECIDAS.forEach(function (cat) {
+    let qtd = map[cat] || 0;
+    if (qtd === 0) return;
+    let icon = ICONES_CATEGORIA[cat] || 'fa-star';
+    html += '<li data-categoria="' + cat.replace(/"/g, '&quot;') + '"><i class="fas ' + icon + '"></i> ' + cat + ' <span>' + qtd + '</span></li>';
   });
-  /* "Outros" last */
-  if (map['Outros']) {
-    html += '<li data-categoria="Outros"><i class="fas fa-th-large"></i> Outros <span>' + map['Outros'] + '</span></li>';
+
+  let qtdOutros = map['Outros'] || 0;
+  if (qtdOutros > 0) {
+    html += '<li data-categoria="Outros"><i class="fas ' + ICONES_CATEGORIA['Outros'] + '"></i> Outros <span>' + qtdOutros + '</span></li>';
   }
 
   let filterList = document.querySelector('.filter-list');
@@ -100,8 +108,8 @@ function renderizarCategorias(artistas) {
 function aplicarFiltros() {
   let filtrados = todosArtistas.filter(function (a) {
     if (filtroCategoria) {
-      let cat = a.categoria_artistica || 'Outros';
-      if (cat !== filtroCategoria) return false;
+      let grupo = categoriaParaGrupo(a.categoria_artistica);
+      if (grupo !== filtroCategoria) return false;
     }
     if (termoBusca) {
       let nome = (a.nome_artistico || a.nome || '').toLowerCase();
@@ -111,7 +119,6 @@ function aplicarFiltros() {
     return true;
   });
 
-  /* Sort */
   if (ordenacaoAtual === 'nome') {
     filtrados.sort(function (a, b) {
       return (a.nome_artistico || a.nome || '').localeCompare(b.nome_artistico || b.nome || '');
@@ -121,7 +128,6 @@ function aplicarFiltros() {
       return (b.total_doacoes || 0) - (a.total_doacoes || 0);
     });
   } else {
-    /* Mais recentes: sort by id descending */
     filtrados.sort(function (a, b) { return (b.id || 0) - (a.id || 0); });
   }
 

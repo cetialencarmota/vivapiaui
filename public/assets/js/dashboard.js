@@ -142,40 +142,69 @@ function fecharModalMensagem() {
   document.body.style.overflow = 'auto';
 }
 
-function carregarMensagens() {
+let mensagensCache = [];
+let mostrarTodasMensagens = false;
+
+function renderizarMensagens() {
   let messagesList = document.querySelector('.messages-list');
+  let linkVerTodas = document.getElementById('link-ver-todas-msg');
   if (!messagesList) return;
+
+  let total = mensagensCache.length;
+  let limite = mostrarTodasMensagens ? total : 5;
+  let exibir = mensagensCache.slice(0, limite);
+
+  messagesList.innerHTML = '';
+  exibir.forEach(function (msg) {
+    let div = document.createElement('div');
+    div.className = 'message-item';
+    let avatarSrc = obterAvatarUrl(msg);
+    let nome = msg.nome || msg.remetente_nome || 'Anônimo';
+    let preview = msg.mensagem ? msg.mensagem.substring(0, 60) + (msg.mensagem.length > 60 ? '...' : '') : '';
+    let tempo = formatarTempoMensagem(msg.data_envio);
+    div.innerHTML =
+      '<div class="user-avatar">' +
+        (msg.lida ? '' : '<span class="status-dot"></span>') +
+        '<img src="' + avatarSrc + '" alt="' + nome + '">' +
+      '</div>' +
+      '<div class="message-content">' +
+        '<span class="user-name">' + nome + '</span>' +
+        '<p class="message-text">' + preview + '</p>' +
+      '</div>' +
+      '<div class="message-meta">' +
+        '<span class="time">' + tempo + '</span>' +
+        '<span class="arrow">›</span>' +
+      '</div>';
+    div.addEventListener('click', function () { abrirModalMensagem(msg); });
+    messagesList.appendChild(div);
+  });
+
+  if (linkVerTodas) {
+    if (total > 5) {
+      linkVerTodas.style.display = '';
+      linkVerTodas.textContent = mostrarTodasMensagens ? 'Mostrar menos −' : 'Ver todas (' + total + ') ↗';
+    } else {
+      linkVerTodas.style.display = 'none';
+    }
+  }
+}
+
+function carregarMensagens() {
   if (!isAuthenticated()) return;
 
   api('/mensagens').then(function (mensagens) {
     if (!mensagens || mensagens.length === 0) {
-      messagesList.innerHTML = '<div class="message-item"><div class="message-content"><p class="message-text">Nenhuma mensagem recebida ainda.</p></div></div>';
+      let messagesList = document.querySelector('.messages-list');
+      if (messagesList) {
+        messagesList.innerHTML = '<div class="message-item"><div class="message-content"><p class="message-text">Nenhuma mensagem recebida ainda.</p></div></div>';
+      }
+      let linkVerTodas = document.getElementById('link-ver-todas-msg');
+      if (linkVerTodas) linkVerTodas.style.display = 'none';
       return;
     }
-    messagesList.innerHTML = '';
-    mensagens.slice(0, 5).forEach(function (msg) {
-      let div = document.createElement('div');
-      div.className = 'message-item';
-      let avatarSrc = obterAvatarUrl(msg);
-      let nome = msg.nome || msg.remetente_nome || 'Anônimo';
-      let preview = msg.mensagem ? msg.mensagem.substring(0, 60) + (msg.mensagem.length > 60 ? '...' : '') : '';
-      let tempo = formatarTempoMensagem(msg.data_envio);
-      div.innerHTML =
-        '<div class="user-avatar">' +
-          (msg.lida ? '' : '<span class="status-dot"></span>') +
-          '<img src="' + avatarSrc + '" alt="' + nome + '">' +
-        '</div>' +
-        '<div class="message-content">' +
-          '<span class="user-name">' + nome + '</span>' +
-          '<p class="message-text">' + preview + '</p>' +
-        '</div>' +
-        '<div class="message-meta">' +
-          '<span class="time">' + tempo + '</span>' +
-          '<span class="arrow">›</span>' +
-        '</div>';
-      div.addEventListener('click', function () { abrirModalMensagem(msg); });
-      messagesList.appendChild(div);
-    });
+    mensagensCache = mensagens;
+    mostrarTodasMensagens = false;
+    renderizarMensagens();
   }).catch(function () { });
 }
 
@@ -341,6 +370,16 @@ document.addEventListener('DOMContentLoaded', function () {
   carregarMensagens();
   carregarObras();
   iniciarModalObra();
+
+  /* Ver todas mensagens toggle */
+  let linkVerTodas = document.getElementById('link-ver-todas-msg');
+  if (linkVerTodas) {
+    linkVerTodas.addEventListener('click', function (e) {
+      e.preventDefault();
+      mostrarTodasMensagens = !mostrarTodasMensagens;
+      renderizarMensagens();
+    });
+  }
 
   /* Modal ver mensagem */
   let modalMsgView = document.getElementById('modal-ver-mensagem');

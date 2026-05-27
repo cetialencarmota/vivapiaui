@@ -130,33 +130,9 @@ document.addEventListener('DOMContentLoaded', async function () {
     /* Works grid */
     let worksGrid = document.querySelector('.works-grid');
     if (worksGrid) {
-      worksGrid.innerHTML = '';
-      let obras = data.obras || [];
-      obras.forEach(function (obra) {
-        let card = document.createElement('div');
-        card.className = 'work-card';
-        card.dataset.id = obra.id;
-
-        let imgHtml;
-        if (obra.imagem_url) {
-          imgHtml = '<img src="' + obra.imagem_url + '" alt="' + (obra.titulo || 'Obra') + '" loading="lazy">';
-        } else {
-          let letra = (obra.titulo || 'O').charAt(0).toUpperCase();
-          imgHtml = '<div class="work-card-placeholder">' + letra + '</div>';
-        }
-
-        card.innerHTML =
-          '<div class="work-card-img">' + imgHtml + '</div>' +
-          '<div class="work-card-body">' +
-            '<h4 class="work-card-titulo">' + (obra.titulo || '') + '</h4>' +
-            '<p class="work-card-descricao">' + (obra.descricao || '') + '</p>' +
-          '</div>';
-
-        card.addEventListener('click', function () {
-          abrirModalObra(obra);
-        });
-        worksGrid.appendChild(card);
-      });
+      window._obrasArtista = data.obras || [];
+      window._obrasExpandidas = false;
+      renderizarObrasPerfil();
     }
 
     /* Hide works section if no obras */
@@ -231,6 +207,53 @@ document.addEventListener('DOMContentLoaded', async function () {
   }
 });
 
+function renderizarObrasPerfil() {
+  let grid = document.querySelector('.works-grid');
+  let link = document.getElementById('link-ver-obras');
+  if (!grid) return;
+
+  let obras = window._obrasArtista || [];
+  let expandidas = window._obrasExpandidas;
+  let limite = expandidas ? obras.length : 3;
+  let exibir = obras.slice(0, limite);
+
+  grid.innerHTML = '';
+  exibir.forEach(function (obra) {
+    let card = document.createElement('div');
+    card.className = 'work-card';
+    card.dataset.id = obra.id;
+
+    let imgHtml;
+    if (obra.imagem_url) {
+      imgHtml = '<img src="' + obra.imagem_url + '" alt="' + (obra.titulo || 'Obra') + '" loading="lazy">';
+    } else {
+      let letra = (obra.titulo || 'O').charAt(0).toUpperCase();
+      imgHtml = '<div class="work-card-placeholder">' + letra + '</div>';
+    }
+
+    card.innerHTML =
+      '<div class="work-card-img">' + imgHtml + '</div>' +
+      '<div class="work-card-body">' +
+        '<h4 class="work-card-titulo">' + (obra.titulo || '') + '</h4>' +
+        '<p class="work-card-descricao">' + (obra.descricao || '') + '</p>' +
+      '</div>';
+
+    card.addEventListener('click', function () {
+      abrirModalObra(obra);
+    });
+    grid.appendChild(card);
+  });
+
+  if (link) {
+    if (obras.length > 3) {
+      link.style.display = '';
+      link.innerHTML = expandidas ? 'Mostrar menos <i class="fas fa-arrow-up"></i>' : 'Ver todas as obras (' + obras.length + ') <i class="fas fa-arrow-right"></i>';
+    } else {
+      link.style.display = 'none';
+    }
+  }
+}
+
 /* Modal de detalhes da obra */
 function abrirModalObra(obra) {
   var modal = document.getElementById('modal-obra-detalhe');
@@ -263,6 +286,15 @@ document.addEventListener('DOMContentLoaded', function () {
   if (modalObra) {
     modalObra.addEventListener('click', function (e) {
       if (e.target === modalObra) fecharModalObra();
+    });
+  }
+
+  var linkObras = document.getElementById('link-ver-obras');
+  if (linkObras) {
+    linkObras.addEventListener('click', function (e) {
+      e.preventDefault();
+      window._obrasExpandidas = !window._obrasExpandidas;
+      renderizarObrasPerfil();
     });
   }
 });
