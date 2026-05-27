@@ -48,16 +48,16 @@ function inicializarModalPix() {
   if (btnCopy) {
     btnCopy.addEventListener('click', async function () {
       let artistaId = modal.dataset.artistaId;
-      if (!artistaId) { alert('Artista não identificado.'); return; }
+      if (!artistaId) { mostrarToast('Artista não identificado.', 'erro'); return; }
       try {
         await api('/doacoes', {
           method: 'POST',
           body: JSON.stringify({ artista_id: parseInt(artistaId), valor: valorSelecionado })
         });
-        alert('Doação registrada com sucesso! Obrigado por apoiar a cultura do Piauí.');
+        mostrarToast('Doação registrada com sucesso! Obrigado por apoiar a cultura do Piauí.', 'sucesso');
         fecharModalPix();
       } catch (err) {
-        alert('Erro ao registrar doação: ' + err.message);
+        mostrarToast('Erro ao registrar doação: ' + err.message, 'erro');
       }
     });
   }
@@ -103,7 +103,7 @@ function inicializarModalMensagem() {
       e.preventDefault();
 
       let artistaId = modalMsg.dataset.artistaId;
-      if (!artistaId) { alert('Artista não identificado.'); return; }
+      if (!artistaId) { mostrarToast('Artista não identificado.', 'erro'); return; }
 
       let nomeInput = document.getElementById('msg-nome');
       let emailInput = document.getElementById('msg-email');
@@ -112,10 +112,10 @@ function inicializarModalMensagem() {
       let email = emailInput.value.trim();
       let mensagem = textoInput.value.trim();
 
-      if (!nome) { alert('Por favor, informe seu nome.'); nomeInput.focus(); return; }
-      if (!mensagem) { alert('Por favor, escreva sua mensagem.'); textoInput.focus(); return; }
+      if (!nome) { mostrarToast('Por favor, informe seu nome.', 'erro'); nomeInput.focus(); return; }
+      if (!mensagem) { mostrarToast('Por favor, escreva sua mensagem.', 'erro'); textoInput.focus(); return; }
       if (email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-        alert('Por favor, informe um e-mail válido.');
+        mostrarToast('Por favor, informe um e-mail válido.', 'erro');
         emailInput.focus();
         return;
       }
@@ -135,15 +135,13 @@ function inicializarModalMensagem() {
             mensagem: mensagem
           })
         });
-        btnSubmit.innerHTML = '<i class="fas fa-check"></i> Enviada!';
-        setTimeout(function () {
-          fecharModalMsg();
-          formMsg.reset();
-          btnSubmit.innerHTML = textoOriginal;
-          btnSubmit.disabled = false;
-        }, 1500);
+        mostrarToast('Mensagem enviada com sucesso!', 'sucesso');
+        fecharModalMsg();
+        formMsg.reset();
+        btnSubmit.innerHTML = textoOriginal;
+        btnSubmit.disabled = false;
       } catch (err) {
-        alert('Erro ao enviar mensagem: ' + err.message);
+        mostrarToast('Erro ao enviar mensagem: ' + err.message, 'erro');
         btnSubmit.innerHTML = textoOriginal;
         btnSubmit.disabled = false;
       }

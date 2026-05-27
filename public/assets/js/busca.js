@@ -24,7 +24,7 @@ async function realizarBusca() {
     resultadosCompletos = data;
     renderizarResultados();
   } catch (err) {
-    document.getElementById('busca-results').innerHTML = '<p class="busca-empty">Erro ao buscar: ' + err.message + '</p>';
+    mostrarToast('Erro ao buscar: ' + err.message, 'erro');
   }
 }
 

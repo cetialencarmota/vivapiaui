@@ -203,11 +203,11 @@ if (btnAlterarFoto && inputAvatar) {
     if (!file) return;
     let tipos = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
     if (!tipos.includes(file.type)) {
-      alert('Formato não aceito. Use JPG, PNG, GIF ou WebP.');
+      mostrarToast('Formato não aceito. Use JPG, PNG, GIF ou WebP.', 'erro');
       return;
     }
     if (file.size > 10 * 1024 * 1024) {
-      alert('A imagem deve ter no máximo 10 MB.');
+      mostrarToast('A imagem deve ter no máximo 10 MB.', 'erro');
       return;
     }
     novaFotoAvatar = file;
@@ -225,7 +225,7 @@ if (formEditar) {
   formEditar.addEventListener('submit', async function (e) {
     e.preventDefault();
     if (!isAuthenticated()) {
-      alert('Faça login para editar seu perfil.');
+      mostrarToast('Faça login para editar seu perfil.', 'erro');
       return;
     }
     let btnSalvar = formEditar.querySelector('.btn-salvar');
@@ -261,10 +261,11 @@ if (formEditar) {
       carregarDadosVisitante();
       atualizarHeaderLogado();
       fecharModal();
-      btnSalvar.innerHTML = '<i class="fas fa-check"></i> Salvo!';
-      setTimeout(function () { btnSalvar.innerHTML = textoOriginal; btnSalvar.disabled = false; }, 2000);
+      mostrarToast('Perfil atualizado com sucesso!', 'sucesso');
+      btnSalvar.innerHTML = textoOriginal;
+      btnSalvar.disabled = false;
     } catch (err) {
-      alert('Erro ao salvar: ' + err.message);
+      mostrarToast('Erro ao salvar: ' + err.message, 'erro');
       btnSalvar.innerHTML = textoOriginal;
       btnSalvar.disabled = false;
     }

@@ -168,7 +168,6 @@
                             <label for="confirmar-senha">Confirmar nova senha</label>
                             <input type="password" id="confirmar-senha" placeholder="Repita a nova senha">
                         </div>
-                        <div id="msg-senha-erro" style="color: #e74c3c; font-size: 0.85rem; margin-bottom: 10px; display: none;"></div>
                         <button type="button" class="btn-salvar" id="btn-salvar-senha" style="width: fit-content; padding: 0.6rem 1.5rem; font-size: 0.9rem;">
                             <i class="fas fa-check"></i> Salvar senha
                         </button>
@@ -176,7 +175,6 @@
                 </div>
             </section>
 
-            <div id="erro-global" style="color: #e74c3c; font-size: 0.9rem; margin-bottom: 1rem; display: none;"></div>
             <div class="footer-acoes">
                 <button type="submit" class="btn-salvar">
                     <i class="fas fa-save"></i> Salvar Alterações
@@ -186,6 +184,7 @@
     </main>
 
     <script src="../assets/js/api.js"></script>
+    <script src="../assets/js/toast.js"></script>
     <script>window._GUARD_PERFIS = ['artista', 'admin'];</script>
     <script src="../assets/js/auth-guard.js"></script>
     <script src="../assets/js/artista-configuracoes.js"></script>
