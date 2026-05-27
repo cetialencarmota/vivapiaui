@@ -58,7 +58,7 @@ function renderizarSecao(titulo, icone, itens, tipo) {
     let link = '';
     if (tipo === 'artista') link = 'perfil-artista.html?id=' + item.id;
     else if (tipo === 'evento') link = 'eventos.html?id=' + item.id;
-    else if (tipo === 'ponto') link = 'mapa.html?id=' + item.id;
+    else if (tipo === 'ponto') link = '../index.html?id=' + item.id;
 
     let img = item.imagem
       ? '<img src="' + item.imagem + '" alt="' + item.nome + '">'
