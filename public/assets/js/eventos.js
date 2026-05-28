@@ -246,14 +246,14 @@ function renderizarEventos(eventos) {
         '<p class="desc">' + (ev.descricao || '') + '</p>' +
         '<div class="item-tags">' + tagsHtml + '</div>' +
       '</div>' +
-      '<button class="btn-map-link" onclick="verNoMapa(\'' + (ev.latitude || '') + '\',\'' + (ev.longitude || '') + '\')"><i class="fas fa-map-marked-alt"></i> Ver no Mapa</button>';
+      '<button class="btn-map-link" onclick="verNoMapa(' + ev.id + ')"><i class="fas fa-map-marked-alt"></i> Ver no Mapa</button>';
     lista.appendChild(item);
   });
 }
 
-function verNoMapa(lat, lng) {
-  if (lat && lng) {
-    window.location.href = '../index.html?lat=' + lat + '&lng=' + lng;
+function verNoMapa(eventoId) {
+  if (eventoId) {
+    window.location.href = '../index.html?id=' + eventoId;
   } else {
     window.location.href = '../index.html';
   }
