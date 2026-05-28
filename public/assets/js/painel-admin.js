@@ -11,14 +11,9 @@ function atualizarHeaderLogado() {
 
   let sidebarAvatar = document.getElementById('sidebar-avatar');
   let sidebarName = document.getElementById('sidebar-user-name');
-  let headerAvatar = document.getElementById('header-avatar');
-  let headerName = document.getElementById('header-user-name');
-
   let avatarSrc = usuario.avatar_url || 'https://via.placeholder.com/50x50?text=' + encodeURIComponent(usuario.nome.charAt(0));
   if (sidebarAvatar) sidebarAvatar.src = avatarSrc;
-  if (headerAvatar) headerAvatar.src = avatarSrc.replace('50x50', '32x32');
   if (sidebarName) sidebarName.textContent = usuario.nome;
-  if (headerName) headerName.textContent = usuario.nome;
 }
 
 function renderizarTabela(itens) {

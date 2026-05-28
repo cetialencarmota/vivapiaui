@@ -241,24 +241,6 @@ body {
     margin-left: 1rem;
 }
 
-.header-user {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-    cursor: pointer;
-}
-
-.header-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-}
-
-.header-user-name {
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
 /* --- DASHBOARD GRID --- */
 .dashboard-grid {
     display: grid;
