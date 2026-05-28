@@ -67,7 +67,67 @@ function configurarLogout() {
   });
 }
 
+function montarMenuMobile() {
+  let btn = document.getElementById('hamburgerBtn');
+  if (!btn) return;
+  if (document.getElementById('mobileMenu')) return;
+
+  let prefix = window.location.pathname.includes('/pages/') ? '' : 'pages/';
+
+  let menu = document.createElement('nav');
+  menu.className = 'mobile-menu';
+  menu.id = 'mobileMenu';
+
+  var links = [
+    { href: '../index.html', icon: 'fa-home', label: 'In\u00edcio' },
+    { href: prefix + 'artistas.html', icon: 'fa-users', label: 'Artistas' },
+    { href: prefix + 'eventos.html', icon: 'fa-calendar-alt', label: 'Eventos' },
+    { href: prefix + 'sobre.html', icon: 'fa-info-circle', label: 'Sobre' }
+  ];
+
+  links.forEach(function (link) {
+    var a = document.createElement('a');
+    a.href = link.href;
+    a.innerHTML = '<i class="fas ' + link.icon + '"></i> ' + link.label;
+    menu.appendChild(a);
+  });
+
+  var searchDiv = document.createElement('div');
+  searchDiv.className = 'mobile-search';
+  searchDiv.innerHTML = '<i class="fas fa-search"></i><input type="text" placeholder="Buscar..." id="mobileSearchInput">';
+  menu.appendChild(searchDiv);
+
+  btn.parentNode.insertBefore(menu, btn.nextSibling);
+
+  btn.addEventListener('click', function () {
+    btn.classList.toggle('active');
+    menu.classList.toggle('open');
+    document.body.style.overflow = menu.classList.contains('open') ? 'hidden' : '';
+  });
+
+  menu.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      btn.classList.remove('active');
+      menu.classList.remove('open');
+      document.body.style.overflow = '';
+    });
+  });
+
+  var searchInput = menu.querySelector('#mobileSearchInput');
+  if (searchInput) {
+    searchInput.addEventListener('keypress', function (e) {
+      if (e.key === 'Enter') {
+        var termo = this.value.trim();
+        if (termo) {
+          window.location.href = prefix + 'busca.html?q=' + encodeURIComponent(termo);
+        }
+      }
+    });
+  }
+}
+
 document.addEventListener('DOMContentLoaded', function () {
+  montarMenuMobile();
   atualizarHeaderLogado();
   configurarLogout();
 

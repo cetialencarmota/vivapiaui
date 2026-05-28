@@ -390,3 +390,81 @@
     font-weight: 600;
     cursor: pointer;
 }
+
+/* --- RESPONSIVIDADE HOME --- */
+@media (max-width: 1024px) {
+    .map-explore-section {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .explore-sidebar {
+        order: 0;
+    }
+
+    .map-container-wrapper {
+        order: 1;
+        height: 350px;
+    }
+
+    .highlights-sidebar {
+        order: 2;
+    }
+
+    .bottom-sections-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .map-explore-section {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .explore-sidebar h2 {
+        font-size: 1.5rem;
+    }
+
+    .map-container-wrapper {
+        height: 300px;
+    }
+
+    .bottom-sections-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .ra-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+    }
+
+    .artists-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .section-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .section-header h3 {
+        font-size: 1.2rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .map-container-wrapper {
+        height: 250px;
+    }
+
+    .ra-cards-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .ra-cards-grid .ra-card .card-img {
+        height: 160px;
+    }
+}
