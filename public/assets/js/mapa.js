@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
   let params = new URLSearchParams(window.location.search);
-  let pontoId = params.get('id');
+  let itemId = params.get('id');
 
   api('/pontos-culturais?status=Publicado')
     .then(function (pontos) {
@@ -29,7 +29,7 @@ document.addEventListener('DOMContentLoaded', function () {
           let descHtml = ponto.descricao ? '<p style="font-size:12px;color:#555;margin:4px 0 0;line-height:1.3;">' + ponto.descricao.substring(0, 80) + (ponto.descricao.length > 80 ? '...' : '') + '</p>' : '';
           marker.bindPopup('<div style="width:200px;color:#333;">' + imgHtml + '<strong>' + ponto.nome + '</strong><br><span style="font-size:12px;color:#FF7A00;">' + (ponto.categoria || ponto.tipo) + '</span>' + descHtml + '</div>');
 
-          if (pontoId && Number(ponto.id) === Number(pontoId)) {
+          if (itemId && Number(ponto.id) === Number(itemId)) {
             mapa.setView([ponto.latitude, ponto.longitude], 14);
             setTimeout(function () { marker.openPopup(); }, 500);
           }
@@ -52,6 +52,11 @@ document.addEventListener('DOMContentLoaded', function () {
           let imgHtml = ev.imagem_url ? '<img src="' + ev.imagem_url + '" style="width:100%;height:90px;object-fit:cover;border-radius:4px;margin-bottom:6px;">' : '';
           let descHtml = ev.descricao ? '<p style="font-size:12px;color:#555;margin:4px 0 0;line-height:1.3;">' + ev.descricao.substring(0, 80) + (ev.descricao.length > 80 ? '...' : '') + '</p>' : '';
           marker.bindPopup('<div style="width:200px;color:#333;">' + imgHtml + '<strong>' + (ev.titulo || ev.nome) + '</strong><br><span style="font-size:12px;color:#FF7A00;">Evento</span>' + descHtml + '</div>');
+
+          if (itemId && Number(ev.id) === Number(itemId)) {
+            mapa.setView([ev.latitude, ev.longitude], 14);
+            setTimeout(function () { marker.openPopup(); }, 500);
+          }
         }
       });
     })
