@@ -36,6 +36,63 @@ body {
     overflow-x: hidden;
 }
 
+/* --- TOPO PÚBLICO --- */
+.top-header-public {
+    display: none;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background: var(--bg-sidebar);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.top-header-public .logo-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-decoration: none;
+    color: inherit;
+}
+
+.top-header-public .logo-link .logo-icon {
+    width: 45px;
+    height: 45px;
+    border-radius: 8px;
+}
+
+.top-header-public .breadcrumb-public {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-secondary);
+    font-size: 14px;
+}
+
+.top-header-public .breadcrumb-public a {
+    color: var(--accent-orange);
+    text-decoration: none;
+    transition: opacity 0.2s;
+}
+
+.top-header-public .breadcrumb-public a:hover {
+    opacity: 0.8;
+}
+
+/* --- MODO PÚBLICO --- */
+.public-mode .container {
+    display: block;
+}
+
+.public-mode .content {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.public-mode .top-header-public {
+    display: flex;
+}
+
 /* --- LAYOUT PRINCIPAL --- */
 .container {
     display: flex;
@@ -330,6 +387,8 @@ body {
     border-radius: 20px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    background: rgba(255, 122, 0, 0.15);
+    color: #ff7a00;
 }
 
 .card-badge.badge-publico {

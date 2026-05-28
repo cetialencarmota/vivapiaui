@@ -6,6 +6,9 @@ let termoBuscaObra = '';
 let paginaAtual = 1;
 let itensPorPagina = 8;
 
+var isPublicView = new URLSearchParams(window.location.search).has('id');
+var artistaIdPublic = new URLSearchParams(window.location.search).get('id');
+
 function mostrarErro(msg) {
   mostrarToast(msg, 'erro');
 }
@@ -75,26 +78,35 @@ function renderObras(obras) {
   let grid = document.getElementById('gridObras');
   if (!grid) return;
   if (!obras || obras.length === 0) {
-    grid.innerHTML = '<p class="vazio">Nenhuma obra encontrada. Adicione sua primeira obra!</p>';
+    grid.innerHTML = '<p class="vazio">Nenhuma obra encontrada.</p>';
     return;
   }
   grid.innerHTML = obras.map(function (obra) {
     let imgSrc = obra.imagem_url || 'https://via.placeholder.com/300x400?text=Sem+Imagem';
-    let badgeClass = obra.status === 'Público' ? 'badge-publico' : 'badge-rascunho';
-    return '<div class="card-obra" data-id="' + obra.id + '">' +
+    let badgeHtml;
+    if (isPublicView) {
+      badgeHtml = '<span class="card-badge">' + (obra.categoria || '') + '</span>';
+    } else {
+      let badgeClass = obra.status === 'Público' ? 'badge-publico' : 'badge-rascunho';
+      badgeHtml = '<span class="card-badge ' + badgeClass + '">' + obra.status + '</span>';
+    }
+    let html = '<div class="card-obra" data-id="' + obra.id + '">' +
       '<div class="card-img-wrapper">' +
         '<img src="' + imgSrc + '" alt="' + obra.titulo + '" class="card-img" loading="lazy">' +
-        '<span class="card-badge ' + badgeClass + '">' + obra.status + '</span>' +
+        badgeHtml +
       '</div>' +
       '<div class="card-info">' +
         '<h3>' + obra.titulo + '</h3>' +
-        '<p class="card-categoria">' + (obra.categoria || '') + '</p>' +
-      '</div>' +
-      '<div class="card-acoes">' +
+        '<p class="card-categoria">' + (isPublicView ? (obra.descricao || '') : (obra.categoria || '')) + '</p>' +
+      '</div>';
+    if (!isPublicView) {
+      html += '<div class="card-acoes">' +
         '<button class="btn-acao" onclick="abrirModalEdicao(' + obra.id + ')"><i class="fas fa-edit"></i> Editar</button>' +
         '<button class="btn-acao excluir" onclick="excluirObra(' + obra.id + ')"><i class="fas fa-trash"></i> Excluir</button>' +
-      '</div>' +
-    '</div>';
+      '</div>';
+    }
+    html += '</div>';
+    return html;
   }).join('');
 }
 
@@ -107,6 +119,32 @@ async function carregarObras() {
     aplicarFiltrosObras();
   } catch (err) {
     console.error('Erro ao carregar obras:', err);
+  }
+}
+
+async function carregarObrasPublicas(artistaId) {
+  try {
+    let data = await api('/artistas/' + artistaId);
+    if (!data || data.error) {
+      mostrarErro('Artista não encontrado');
+      return;
+    }
+    let nomeArtista = data.nome_artistico || data.nome || 'Artista';
+    document.title = nomeArtista + ' - Obras - Viva Piauí';
+    let topHeader = document.getElementById('topHeaderPublic');
+    if (topHeader) topHeader.style.display = 'flex';
+    let bcNome = document.getElementById('bcArtistaNome');
+    if (bcNome) bcNome.textContent = nomeArtista;
+    let tituloSecao = document.querySelector('.titulo-secao h1');
+    if (tituloSecao) tituloSecao.textContent = 'Obras de ' + nomeArtista;
+    let subtitulo = document.querySelector('.titulo-secao p');
+    if (subtitulo) subtitulo.textContent = 'Conheça o portfólio completo do artista.';
+    todasObras = data.obras || [];
+    paginaAtual = 1;
+    renderizarFiltros(todasObras);
+    aplicarFiltrosObras();
+  } catch (err) {
+    console.error('Erro ao carregar obras públicas:', err);
   }
 }
 
@@ -343,6 +381,14 @@ function processarArquivo(file, placeholder, preview) {
 }
 
 document.addEventListener('DOMContentLoaded', function () {
+  if (isPublicView) {
+    document.body.classList.add('public-mode');
+    document.getElementById('sidebarPainel').style.display = 'none';
+    document.getElementById('acoesHeader').style.display = 'none';
+    carregarObrasPublicas(artistaIdPublic);
+    return;
+  }
+
   configurarLogout();
   carregarSidebar();
   configurarUpload();

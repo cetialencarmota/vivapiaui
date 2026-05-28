@@ -3,15 +3,31 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meu Portfólio - Viva Piauí</title>
+    <title id="pageTitle">Meu Portfólio - Viva Piauí</title>
     <link rel="stylesheet" href="../assets/css/portfolio.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- TOPO PÚBLICO (visível apenas no modo público) -->
+    <header class="top-header-public" id="topHeaderPublic" style="display:none;">
+        <a href="../index.html" class="logo-link">
+            <img src="../assets/images/logo.png" alt="Viva Piauí" class="logo-icon">
+            <div class="logo-text">
+                <h1>Viva <span>PIAUÍ</span></h1>
+                <p>Cultura que você sente</p>
+            </div>
+        </a>
+        <nav class="breadcrumb-public">
+            <a href="artistas.html">Artistas</a>
+            <span>/</span>
+            <span id="bcArtistaNome">Obras</span>
+        </nav>
+    </header>
+
     <div class="container">
         <!-- BARRA LATERAL (SIDEBAR) -->
-        <aside class="sidebar">
+        <aside class="sidebar" id="sidebarPainel">
             <div class="logo-container">
                 <a href="../index.html">
                     <img src="../assets/images/logo.png" alt="Logo Viva Piauí" class="logo-icon">
@@ -22,7 +38,7 @@
                 </a>
             </div>
 
-            <nav class="menu-principal">
+            <nav class="menu-principal" id="navManagement">
                 <a href="dashboard-artista.html" class="menu-item">
                     <span class="icon">⊞</span> Dashboard
                 </a>
@@ -44,7 +60,7 @@
                 </div>
             </div>
 
-            <button class="btn-logout">
+            <button class="btn-logout" id="btnLogout">
                 <span class="icon">↪</span> Sair da conta
             </button>
         </aside>
@@ -56,7 +72,7 @@
                     <h1>Meu Portfólio</h1>
                     <p>Gerencie e compartilhe suas obras com o mundo.</p>
                 </div>
-                <div class="acoes-header">
+                <div class="acoes-header" id="acoesHeader">
                     <div class="search-bar">
                         <input type="text" id="searchObra" placeholder="Buscar obra...">
                         <span class="search-icon"><i class="fas fa-search"></i></span>
@@ -189,8 +205,20 @@
 
     <script src="../assets/js/api.js"></script>
     <script src="../assets/js/toast.js"></script>
-    <script>window._GUARD_PERFIS = ['artista', 'admin'];</script>
-    <script src="../assets/js/auth-guard.js"></script>
+    <script>
+      var _isPublicView = new URLSearchParams(window.location.search).has('id');
+      if (!_isPublicView) {
+        if (!isAuthenticated()) {
+          window.location.href = 'login.html';
+        } else {
+          var _usuario = getUsuarioLogado();
+          var _perfisPermitidos = ['artista', 'admin'];
+          if (!_usuario || _perfisPermitidos.indexOf(_usuario.tipo_perfil) === -1) {
+            window.location.href = '../index.html';
+          }
+        }
+      }
+    </script>
     <script src="../assets/js/portfolio-artista.js"></script>
 </body>
 </html>
