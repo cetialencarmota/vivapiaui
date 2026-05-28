@@ -1,3 +1,13 @@
+/**
+ * Gerenciamento de favoritos do visitante.
+ * 
+ * favoritosCache (global compartilhado): IDs dos artistas favoritados.
+ * Persistido entre páginas via carregarIdsFavoritos().
+ * 
+ * Fluxo: carregarIdsFavoritos() -> toggleFavoritar(id, btn)
+ * 
+ * Dependências: api.js (isAuthenticated, api), toast.js (mostrarToast)
+ */
 let favoritosCache = [];
 let artistasCache = [];
 var _meuArtistaId = undefined; // undefined = not checked, null = not artist, number = artist ID

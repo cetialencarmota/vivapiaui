@@ -1,3 +1,14 @@
+/**
+ * Configurações do Artista.
+ * 
+ * Fluxo principal:
+ * 1. DOMContentLoaded -> carrega dados do artista nos campos do formulário
+ * 2. Upload de foto/capa -> preview local -> upload p/ servidor
+ * 3. "Salvar" -> upload de imagens pendentes -> PUT /artistas/me -> PUT /auth/me
+ * 4. "Alterar Senha" -> exibe/oculta formulário -> PUT /auth/password
+ * 
+ * Dependências: api.js, toast.js, header.js
+ */
 let fotoFile = null;
 let capaFile = null;
 

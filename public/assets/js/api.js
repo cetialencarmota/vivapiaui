@@ -1,3 +1,11 @@
+/**
+ * API client para o Viva Piauí.
+ * Gerencia autenticação via JWT e requisições fetch com a API backend.
+ * 
+ * Fornece: getToken, setToken, clearToken, isAuthenticated,
+ * getUsuarioLogado, setUsuarioLogado, clearUsuarioLogado,
+ * gerarAvatarFallback, api.
+ */
 const API_BASE = '/api';
 
 function getToken() {

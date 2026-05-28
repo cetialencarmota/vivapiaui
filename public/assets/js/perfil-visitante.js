@@ -1,3 +1,15 @@
+/**
+ * Perfil do Visitante.
+ * 
+ * Fluxo principal:
+ * 1. DOMContentLoaded -> carrega dados, favoritos, eventos, apoios
+ * 2. "Editar Perfil"  -> abre modal com formulário
+ * 3. "Alterar Foto"   -> seleciona arquivo, preview local
+ * 4. "Salvar"         -> upload da foto (se houver) -> PUT /auth/me -> atualiza header
+ * 
+ * Sobrescreve funções do header.js para esta página:
+ *   gerenciarDropdown, atualizarHeaderLogado, configurarLogout
+ */
 let novaFotoAvatar = null;
 
 function gerenciarDropdown() {

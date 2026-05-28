@@ -1,3 +1,13 @@
+/**
+ * Header padrão do Viva Piauí.
+ * 
+ * gerenciarDropdown:      Abre/fecha o menu dropdown do usuário
+ * atualizarHeaderLogado: Atualiza avatar, nome e links no header
+ * configurarLogout:      Escuta cliques em "Sair" e limpa sessão
+ * montarMenuMobile:      Cria o menu mobile hamburguer
+ * 
+ * Executado automaticamente no DOMContentLoaded.
+ */
 function gerenciarDropdown() {
   let profile = document.querySelector('.user-profile-mini');
   let menu = document.getElementById('dropdownMenu');
