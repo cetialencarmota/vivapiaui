@@ -135,6 +135,8 @@ async function carregarObrasPublicas(artistaId) {
     if (topHeader) topHeader.style.display = 'flex';
     let bcNome = document.getElementById('bcArtistaNome');
     if (bcNome) bcNome.textContent = nomeArtista;
+    let linkPerfil = document.getElementById('mobileLinkPerfil');
+    if (linkPerfil) linkPerfil.href = 'perfil-artista.html?id=' + artistaId;
     let tituloSecao = document.querySelector('.titulo-secao h1');
     if (tituloSecao) tituloSecao.textContent = 'Obras de ' + nomeArtista;
     let subtitulo = document.querySelector('.titulo-secao p');
@@ -380,11 +382,32 @@ function processarArquivo(file, placeholder, preview) {
   reader.readAsDataURL(file);
 }
 
+function toggleMobileMenu() {
+  let btn = document.getElementById('hamburgerBtn');
+  let menu = document.getElementById('mobileMenu');
+  if (!btn || !menu) return;
+  btn.classList.toggle('active');
+  menu.classList.toggle('open');
+}
+
 document.addEventListener('DOMContentLoaded', function () {
   if (isPublicView) {
     document.body.classList.add('public-mode');
     document.getElementById('sidebarPainel').style.display = 'none';
     document.getElementById('acoesHeader').style.display = 'none';
+
+    let hamburgerBtn = document.getElementById('hamburgerBtn');
+    if (hamburgerBtn) {
+      hamburgerBtn.addEventListener('click', toggleMobileMenu);
+    }
+
+    document.querySelectorAll('#mobileMenu a').forEach(function (link) {
+      link.addEventListener('click', function () {
+        document.getElementById('hamburgerBtn').classList.remove('active');
+        document.getElementById('mobileMenu').classList.remove('open');
+      });
+    });
+
     carregarObrasPublicas(artistaIdPublic);
     return;
   }

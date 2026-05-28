@@ -619,3 +619,33 @@ body {
     color: var(--cor-texto-claro);
     border-color: rgba(255, 255, 255, 0.2);
 }
+
+/* --- RESPONSIVIDADE DASHBOARD --- */
+@media (max-width: 900px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main-content {
+        margin-left: 0;
+        padding: 1.5rem;
+    }
+
+    .content-header {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .content-header .hamburger-btn {
+        align-self: flex-end;
+        margin-bottom: 10px;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+    }
+}

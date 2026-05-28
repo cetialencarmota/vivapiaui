@@ -270,6 +270,104 @@ body {
     background: #e06e00;
 }
 
+/* --- HAMBURGUER --- */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 2100;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--cor-texto-claro);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* --- MENU MOBILE --- */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(10,11,20,0.97);
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    z-index: 2050;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s, visibility 0.3s;
+}
+
+.mobile-menu.open {
+    display: flex;
+    opacity: 1;
+    visibility: visible;
+}
+
+.mobile-menu a {
+    color: var(--cor-texto-claro);
+    text-decoration: none;
+    font-size: 1.4rem;
+    font-weight: 600;
+    padding: 14px 30px;
+    transition: color 0.2s;
+    text-align: center;
+}
+
+.mobile-menu a:hover,
+.mobile-menu a.active {
+    color: var(--cor-primaria);
+}
+
+.mobile-menu .mobile-search {
+    margin-top: 20px;
+    width: 80%;
+    max-width: 320px;
+    background: var(--cor-fundo-card);
+    border-radius: 20px;
+    padding: 10px 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.mobile-menu .mobile-search input {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    width: 100%;
+    outline: none;
+}
+
+.mobile-menu .mobile-search i {
+    color: #666;
+}
 
 /* --- FOOTER / BENEFÍCIOS --- */
 .main-footer {
@@ -293,6 +391,13 @@ body {
     min-width: 30px;
 }
 
+.benefit-text {
+    min-width: 0;
+    flex: 1;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
 .benefit-text strong {
     font-size: 0.9rem;
     display: block;
@@ -304,14 +409,7 @@ body {
     color: var(--cor-texto-escuro);
 }
 
-
-/* --- RESPONSIVIDADE --- */
-@media (max-width: 992px) {
-    .auth-sidebar {
-        display: none;
-    }
-}
-
+/* --- RESPONSIVIDADE HEADER --- */
 @media (max-width: 1200px) {
     .ra-cards-grid {
         grid-template-columns: repeat(2, 1fr);
@@ -324,6 +422,73 @@ body {
     }
 }
 
+@media (max-width: 992px) {
+    .auth-sidebar {
+        display: none;
+    }
+}
+
+@media (max-width: 900px) {
+    .main-header {
+        padding: 12px 20px;
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .header-right .search-bar {
+        display: none;
+    }
+
+    .header-right .user-profile-mini {
+        display: none;
+    }
+
+    .hamburger-btn {
+        display: flex;
+        margin-left: auto;
+    }
+
+    .logo-mini {
+        width: 45px;
+        height: 45px;
+    }
+
+    .logo-text-small h1 {
+        font-size: 1.1rem;
+    }
+
+    .logo-text-small p {
+        display: none;
+    }
+
+    .content-wrapper {
+        padding: 20px;
+    }
+
+    .main-footer {
+        padding: 35px 24px;
+        gap: 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    .content-wrapper {
+        padding: 16px;
+    }
+
+    .main-footer {
+        grid-template-columns: 1fr;
+        padding: 30px 20px;
+    }
+
+    .benefit-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
 
 /* --- DROPDOWN DO PERFIL --- */
 .user-profile-mini {

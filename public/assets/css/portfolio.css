@@ -44,6 +44,7 @@ body {
     padding: 15px 40px;
     background: var(--bg-sidebar);
     border-bottom: 1px solid var(--border-color);
+    position: relative;
 }
 
 .top-header-public .logo-link {
@@ -91,6 +92,117 @@ body {
 
 .public-mode .top-header-public {
     display: flex;
+}
+
+/* --- HAMBURGUER --- */
+.hamburger-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 2100;
+}
+
+.hamburger-btn span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--text-primary);
+    border-radius: 2px;
+    transition: 0.3s;
+}
+
+.hamburger-btn.active span:nth-child(1) {
+    transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+}
+
+.hamburger-btn.active span:nth-child(3) {
+    transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* --- MENU MOBILE --- */
+.mobile-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background: var(--bg-sidebar);
+    border-bottom: 1px solid var(--border-color);
+    flex-direction: column;
+    padding: 10px 0;
+    z-index: 2000;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+}
+
+.mobile-menu.open {
+    display: flex;
+}
+
+.mobile-menu a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 40px;
+    color: var(--text-secondary);
+    text-decoration: none;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+.mobile-menu a:hover {
+    color: var(--accent-orange);
+    background: rgba(255,122,0,0.05);
+}
+
+.mobile-menu a i {
+    width: 18px;
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .top-header-public {
+        padding: 12px 20px;
+        position: relative;
+    }
+
+    .top-header-public .logo-link .logo-icon {
+        width: 38px;
+        height: 38px;
+    }
+
+    .top-header-public .logo-text h1 {
+        font-size: 1.1rem;
+    }
+
+    .top-header-public .logo-text p {
+        font-size: 0.6rem;
+    }
+
+    .breadcrumb-public {
+        display: none;
+    }
+
+    .hamburger-btn {
+        display: flex;
+    }
+
+    .public-mode .content {
+        padding: 20px;
+    }
+
+    .grid-obras {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 15px;
+    }
 }
 
 /* --- LAYOUT PRINCIPAL --- */
