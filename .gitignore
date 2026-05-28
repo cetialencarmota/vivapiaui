@@ -1,3 +1,5 @@
 docs/
 scripts/
 public/docs/
+data/viva_piaui.db-shm
+data/viva_piaui.db-wal
