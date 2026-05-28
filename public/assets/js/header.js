@@ -26,7 +26,7 @@ function atualizarHeaderLogado() {
   }
 
   let img = profileMini.querySelector('img');
-  if (img) img.src = usuario.avatar_url || 'https://via.placeholder.com/32x32?text=' + usuario.nome.charAt(0);
+  if (img) img.src = usuario.avatar_url || gerarAvatarFallback(usuario.nome, 32);
 
   let nameSpan = profileMini.querySelector(':scope > span');
   if (nameSpan) {

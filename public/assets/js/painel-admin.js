@@ -5,13 +5,13 @@ let itensPorPagina = 8;
 let tipoFormulario = 'Lugar';
 let imagemUploadadaUrl = null;
 
-function atualizarHeaderLogado() {
+function atualizarSidebarAdmin() {
   let usuario = getUsuarioLogado();
   if (!usuario) return;
 
   let sidebarAvatar = document.getElementById('sidebar-avatar');
   let sidebarName = document.getElementById('sidebar-user-name');
-  let avatarSrc = usuario.avatar_url || 'https://via.placeholder.com/50x50?text=' + encodeURIComponent(usuario.nome.charAt(0));
+  let avatarSrc = usuario.avatar_url || gerarAvatarFallback(usuario.nome, 50);
   if (sidebarAvatar) sidebarAvatar.src = avatarSrc;
   if (sidebarName) sidebarName.textContent = usuario.nome;
 }
@@ -205,7 +205,7 @@ function configurarUploadAvatar() {
         raw: true
       });
       setUsuarioLogado(result.usuario);
-      atualizarHeaderLogado();
+      atualizarSidebarAdmin();
       mostrarToast('Foto atualizada com sucesso!', 'sucesso');
     } catch (err) {
       mostrarToast('Erro ao enviar foto: ' + err.message, 'erro');
@@ -369,8 +369,19 @@ function configurarLogout() {
   });
 }
 
+function configurarHamburger() {
+  let btn = document.getElementById('hamburgerBtn');
+  let sidebar = document.querySelector('.sidebar');
+  if (!btn || !sidebar) return;
+  btn.addEventListener('click', function () {
+    btn.classList.toggle('active');
+    let isVisible = sidebar.style.display === 'flex';
+    sidebar.style.display = isVisible ? 'none' : 'flex';
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function () {
-  atualizarHeaderLogado();
+  atualizarSidebarAdmin();
   configurarLogout();
   configurarUploadAvatar();
   configurarUploadImagem();
@@ -378,4 +389,5 @@ document.addEventListener('DOMContentLoaded', function () {
   configurarFormulario();
   configurarAbas();
   configurarFiltros();
+  configurarHamburger();
 });

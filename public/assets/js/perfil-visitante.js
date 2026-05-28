@@ -59,8 +59,8 @@ async function carregarDadosVisitante() {
   if (nomeEl) nomeEl.textContent = usuario.nome;
   if (bioEl) bioEl.textContent = usuario.bio || 'Nenhuma biografia cadastrada.';
   if (cidadeEl) cidadeEl.innerHTML = '<i class="fas fa-map-marker-alt"></i> ' + (usuario.cidade || 'Não informada');
-  if (avatarEl) avatarEl.src = usuario.avatar_url || 'https://via.placeholder.com/300x300?text=' + encodeURIComponent(usuario.nome.charAt(0));
-  if (avatarEdit) avatarEdit.src = usuario.avatar_url || 'https://via.placeholder.com/300x300?text=' + encodeURIComponent(usuario.nome.charAt(0));
+  if (avatarEl) avatarEl.src = usuario.avatar_url || gerarAvatarFallback(usuario.nome, 300);
+  if (avatarEdit) avatarEdit.src = usuario.avatar_url || gerarAvatarFallback(usuario.nome, 300);
   if (memberSinceEl) memberSinceEl.innerHTML = '<i class="fas fa-calendar-alt"></i> Membro desde: ' + formatarData(usuario.data_cadastro);
 
   let nomeInput = document.getElementById('nome');
@@ -287,7 +287,7 @@ function atualizarHeaderLogado() {
   }
 
   let img = profileMini.querySelector('img');
-  if (img) img.src = usuario.avatar_url || 'https://via.placeholder.com/32x32?text=' + usuario.nome.charAt(0);
+  if (img) img.src = usuario.avatar_url || gerarAvatarFallback(usuario.nome, 32);
 }
 
 function configurarLogout() {
