@@ -2,7 +2,11 @@ docs/
 scripts/
 public/docs/
 *.db-shm
+<<<<<<< HEAD
 *.db-wal
 *.db-journal
 server_err.txt
 server_out.txt
+=======
+*.db-wal
+>>>>>>> 2f960630fab97713f30342d78ba9094d40b5c988

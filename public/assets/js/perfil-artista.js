@@ -166,6 +166,12 @@ document.addEventListener('DOMContentLoaded', async function () {
       if (worksGrid) worksGrid.style.display = 'none';
     }
 
+    /* Update "Ver todas as obras" link */
+    let linkObras = document.getElementById('linkTodasObras');
+    if (linkObras) {
+      linkObras.href = 'portfolio-artista.html?id=' + artistaId;
+    }
+
     /* Hide events section (no artist filter endpoint yet) */
     let eventsHeader = document.querySelector('.profile-content > .section-header.mt-4');
     let eventsRow = document.querySelector('.events-row');
