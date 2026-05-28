@@ -263,6 +263,32 @@ textarea {
     margin-top: 5px;
 }
 
+/* --- WRAPPER PARA INPUT DE SENHA --- */
+.senha-wrapper {
+    position: relative;
+}
+
+.senha-wrapper .toggle-senha {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #666;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 2;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.senha-wrapper .toggle-senha:hover {
+    color: #fff;
+}
+
+.senha-wrapper input {
+    padding-right: 40px;
+}
+
 /* --- INPUT COM ÍCONE (REDES SOCIAIS) --- */
 .input-icon-wrapper {
     position: relative;
